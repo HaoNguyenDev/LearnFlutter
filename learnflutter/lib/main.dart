@@ -25,10 +25,13 @@ void main() {
 
   debugPrint('👉 👉 👉 Value: $listNames');
   
-  saySomething();
+  saySomething(); // Function
 
-  var sumVoidResult = sumVoid(1, 2);
+  var sumVoidResult = sumVoid(1, 2); // Function
   debugPrint('sumVoidResult $sumVoidResult');
+
+  var myCar = Car("Mercedes", "MayBach", 2025);
+  myCar.displayInfo();
 }
 
   // Functions
@@ -42,3 +45,16 @@ void main() {
   }
   // Void with short syntax
   int multiply(int a, int b) => a * b;
+
+  // Class
+  class Car {
+    String brand;
+    String model;
+    int year;
+
+    Car(this.brand, this.model, this.year);
+
+    void displayInfo() {
+      print('Car info: Brand name: $brand, model: $model, year: $year');
+    }
+  }
