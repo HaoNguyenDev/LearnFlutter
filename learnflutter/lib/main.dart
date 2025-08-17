@@ -47,9 +47,7 @@
       numberOfCar = number;
     }
 
-    void displayCarInfo() {
-      print('Car info: $brandName, $modelName , $year');
-    }
+    String displayCarInfo() => 'Car info: $brandName, $modelName , $year';
 
     int? getYear() {
       return year;
@@ -101,14 +99,37 @@
 
     @override
     void maxSpeed() {
-      print('Your $name with $color color has max speed is $speeds km/h');
+      print('Your $name with $color color has max speed is $speeds km/h only!');
     }
   }
 
 
-  void main() {
-    var bicycle = Bicycle('Martin', 'white', 2, 2022, 'too slow', 30);
-    // print('Your verhical has name: $bicycle.name, and color: $bicycle.color, $bicycle.numberOfWheels');
-    bicycle.maxSpeed();
-    print('characteristic: $bicycle.characteristic');
+  // void main() {
+  //   var bicycle = Bicycle('Martin', 'white', 2, 2022, 'too slow', 30);
+  //   print('Your verhical has name: ${bicycle.name}, and color: ${bicycle.color}, number of wheels: ${bicycle.numberOfWheels}');
+  //   bicycle.maxSpeed();
+  //   print('Characteristic: ${bicycle.characteristic}');
+  // }
+
+//////////////////////////////// Abstract class ///////////////////////////////////////
+ abstract class Shape {
+  double calculateArea();
+  void draw() {
+    print('Draw your shape right here');
   }
+ }
+
+ class Rectangle extends Shape {
+  double width, height;
+
+  Rectangle(this.width, this.height);
+
+  @override
+  double calculateArea() => width * height;
+ }
+
+ void main() {
+  var rectangle = Rectangle(10.0, 10.0);
+  print('Area of the ractangle are: ${rectangle.calculateArea()}');
+  rectangle.draw();
+ }
