@@ -27,9 +27,6 @@
 
 //   var sumVoidResult = sumVoid(1, 2); // Function
 //   debugPrint('sumVoidResult $sumVoidResult');
-
-//   var myCar = Car("Mercedes", "MayBach", 2025);
-//   myCar.displayInfo();
 // }
 
 //   // Functions
@@ -44,45 +41,39 @@
 //   // Void with short syntax
 //   int multiply(int a, int b) => a * b;
 
-  // Class
   class Car {
-    // Properties
-    String? brand;
-    String? model;
+    String? brandName;
+    String? modelName;
     int? year;
 
-    // Short Constructor
-    Car.vinfast() {
-      brand = "Vinfast";
-      model = "VF9";
-      year = 2025;
-    }
+    // Car(this.brandName, this.modelName, this.year)
 
-    // Car(this.brand, this.model, this.year);
-    
-    // Normal constrcutor
-    Car(String brandName, String model, int year) {
-      this.brand = brandName;
-      this.model = model;
+    Car(String? brandName, String? modelName, int? year) {
+      this.brandName = brandName;
+      this.modelName = modelName;
       this.year = year;
     }
 
-    // Custom name of constructor
-    Car.customNameOfConstructor(String newBrand, String newModel) {
-      this.brand = newBrand;
-      this.model = newModel;
-      this.year = 2026;
+    Car.customConstructor(String? brandName, String? modelName, int? year) {
+      this.brandName = brandName;
+      this.modelName = modelName;
+      this.year = year;
     }
 
-    // Method
-    void displayInfo() {
-      print('Car info: Brand name: $brand, model: $model, year: $year');
+    Car.teslaCar() {
+      this.brandName = 'Tesla';
+      this.modelName = 'Model Y';
+      this.year = 2025;
+    }
+
+    void displayCarInfo() {
+      print('Car info: $brandName, $modelName , $year');
     }
   }
 
   void main() {
-      // var myCar = Car("Mercedes", "MayBach", 2025);
-      // var myCar = Car.customNameOfConstructor("Testla", "Model-X");
-      var myCar = Car.vinfast();
-      myCar.displayInfo();
+    // var myCar = Car("Vinfast", "VF9", 2025);
+    // var myCar = Car.customConstructor('Mercedes', 'MayBach', 2025);
+    var myCar = Car.teslaCar();
+    myCar.displayCarInfo();
   }
