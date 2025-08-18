@@ -138,28 +138,88 @@
 //////////////////////////////// Home Work ///////////////////////////////////////
 
 class Calculator {
+  static const double pi = 3.14;  // const the same with let in Swfit
+  final className = 'Calculator'; // can set value one time only
+  late String? lateVariable;      // late mean can set value after init
+  dynamic dynamicVariable;        // Undefine type until runtime, not compile-time. We can use dynamic type when work with Json if can't define field type.
+
+  Object myObject = 'Hello';      // Define type when compile-time. Used Object when you need a variable that can hold any object, the same with Any and AnyObject in Swift.
+  // When you want to store objects of different types in the same List or Map:
+  List<Object> items = [1, 'hello', 3.14, true];
+  Map<String, Object> myData = {
+    'name': 'Dart',
+    'age': 5,
+    'is_cool': true
+  };
+
   double? firstNumber;
-  double? secondNumber;
+  var secondNumber = 0.0;
+  String? nullableVariable;
 
   List<int> firstNumbers;
   List<int> secondNumbers;
 
   Calculator(this.firstNumber, this.secondNumber, this.firstNumbers, this.secondNumbers);
 
-  double add() => firstNumber! + secondNumber!;
-  double subtract() => firstNumber! - secondNumber!;
-  double multiply() => firstNumber! * secondNumber!;
-  double divide() => firstNumber! / secondNumber!;
-  int divideInterger() => firstNumber! ~/ secondNumber!;
-  double mod() => firstNumber! % secondNumber!;
+  double add() => firstNumber! + secondNumber;
+  double subtract() => firstNumber! - secondNumber;
+  double multiply() => firstNumber! * secondNumber;
+  double divide() => firstNumber! / secondNumber;
+  int divideInterger() => firstNumber! ~/ secondNumber;
+  double mod() => firstNumber! % secondNumber;
   bool modWithFirstNumber() => firstNumber! % 2 == 0;
-  bool modWithSecondNumber() => secondNumber! % 2 == 0;
+  bool modWithSecondNumber() => secondNumber % 2 == 0;
   List<int> combineList() => [...firstNumbers, ...secondNumbers];
 
-  // void filterWith(bool evenNumber) {
-  //   numbers.firstWhere()
-  // }
+  List<int>? filterWith(bool filterEvenNumber, List<int> yourNumbers) {
+    var eventNumberTmp = <int>[];
+    var oddNumberTmp = <int>[];
+      for (var number in yourNumbers) {
+        if (number % 2 == 0) {
+          eventNumberTmp.add(number);
+        } else {
+          oddNumberTmp.add(number);
+        }
+      }
+    return filterEvenNumber ? eventNumberTmp : oddNumberTmp;
+  }
 
+  void forUpper() {
+    for (var i = 0; i <= 10; i++) {
+      print(i);
+    }
+     print('\n');
+  }
+
+  void forList() {
+    List<String> letters = ['a', 'b', 'c', 'd', 'e'];
+    for (var letter in letters) {
+      print(letter);
+    }
+
+    print('\n');
+
+    List<String> names = ['An', 'Binh', 'Cuong', 'Dung', 'Yen'];
+    for (var index = 0; index < names.length; index++) {
+      print('Name at index number $index is ${names[index]}');
+    }
+    print('\n');
+  }
+
+  void forEachList() {
+    List<String> numberLetters = ['Mot', 'Hai', 'Ba', 'Bon', 'Nam'];
+    numberLetters.forEach((letter) {
+      print(letter);
+    });
+
+    print('\n');
+  }
+
+  // Use Object type when you want to write a function that can accept any data type as an argument:
+
+  void showMeTypeOf(Object param) {
+    print('The type of $param is ${param.runtimeType}');
+  }
 }
 
 void main() { 
@@ -176,4 +236,14 @@ void main() {
   print('modWithFirstNumber: ${cal.firstNumber}, %2 = ${cal.modWithFirstNumber() ? 'even number' : 'odd number'}\n');
   print('modWithSecondNumber: ${cal.secondNumber}, %2 = ${cal.modWithSecondNumber() ? 'even number' : 'odd number'}\n');
   print('Combine list: ${cal.combineList()}');
+  print('Filter even number: ${cal.filterWith(true, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}');
+  print('Filter odd number: ${cal.filterWith(false, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}\n');
+
+  cal.forUpper();
+  cal.forList();
+  cal.forEachList();
+
+  cal.showMeTypeOf('Hello');
+  cal.showMeTypeOf(10.0);
+  cal.showMeTypeOf(true);
 }
