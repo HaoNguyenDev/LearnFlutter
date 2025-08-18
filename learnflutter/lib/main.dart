@@ -7,6 +7,7 @@
    // Variable and type
     final lastName = 'Hao';      // final: A variable that can only be assigned a value once.
     final int finalVariable = 10;
+    static const double piNetwork = 3.14;
     late int numberOfCar;        // late: A variable can be initialized later, instead of immediately.
     String firstName = 'Nguyen';
     int aNumber = 11;
@@ -94,7 +95,7 @@
     String? characteristic;
     int? speeds;
 
-    Bicycle(String name, String color, int numberOfWheels, int year, this.characteristic, this.speeds): super(name, color, numberOfWheels, year);
+    Bicycle(String super.name, String super.color, int super.numberOfWheels, int super.year, this.characteristic, this.speeds);
      // :super() Call constructor of super class
 
     @override
@@ -128,8 +129,51 @@
   double calculateArea() => width * height;
  }
 
- void main() {
-  var rectangle = Rectangle(10.0, 10.0);
-  print('Area of the ractangle are: ${rectangle.calculateArea()}');
-  rectangle.draw();
- }
+//  void main() {
+//   var rectangle = Rectangle(10.0, 10.0);
+//   print('Area of the ractangle are: ${rectangle.calculateArea()}');
+//   rectangle.draw();
+//  }
+
+//////////////////////////////// Home Work ///////////////////////////////////////
+
+class Calculator {
+  double? firstNumber;
+  double? secondNumber;
+
+  List<int> firstNumbers;
+  List<int> secondNumbers;
+
+  Calculator(this.firstNumber, this.secondNumber, this.firstNumbers, this.secondNumbers);
+
+  double add() => firstNumber! + secondNumber!;
+  double subtract() => firstNumber! - secondNumber!;
+  double multiply() => firstNumber! * secondNumber!;
+  double divide() => firstNumber! / secondNumber!;
+  int divideInterger() => firstNumber! ~/ secondNumber!;
+  double mod() => firstNumber! % secondNumber!;
+  bool modWithFirstNumber() => firstNumber! % 2 == 0;
+  bool modWithSecondNumber() => secondNumber! % 2 == 0;
+  List<int> combineList() => [...firstNumbers, ...secondNumbers];
+
+  // void filterWith(bool evenNumber) {
+  //   numbers.firstWhere()
+  // }
+
+}
+
+void main() { 
+  var firstNumbers = [0, 1, 2, 3, 4, 5];
+  var secondNumber = [6 , 7, 8, 9, 10];
+  var cal = Calculator(10, 3, firstNumbers, secondNumber);
+
+  print('add: ${cal.firstNumber} + ${cal.secondNumber} = ${cal.add()}\n');
+  print('subtract: ${cal.firstNumber} - ${cal.secondNumber} = ${cal.subtract()}\n');
+  print('multiply: ${cal.firstNumber} * ${cal.secondNumber} = ${cal.multiply()}\n');
+  print('divide: ${cal.firstNumber} / ${cal.secondNumber} = ${cal.divide()}\n');
+  print('divideInterger: ${cal.firstNumber} ~/ ${cal.secondNumber} = ${cal.divideInterger()}\n');
+  print('mod: ${cal.firstNumber} % ${cal.secondNumber} = ${cal.mod()}\n');
+  print('modWithFirstNumber: ${cal.firstNumber}, %2 = ${cal.modWithFirstNumber() ? 'even number' : 'odd number'}\n');
+  print('modWithSecondNumber: ${cal.secondNumber}, %2 = ${cal.modWithSecondNumber() ? 'even number' : 'odd number'}\n');
+  print('Combine list: ${cal.combineList()}');
+}
