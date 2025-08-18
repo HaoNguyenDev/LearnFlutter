@@ -138,19 +138,13 @@
 //////////////////////////////// Home Work ///////////////////////////////////////
 
 class Calculator {
-  static const double pi = 3.14;  // const the same with let in Swfit
+  static const double pi = 3.14;  // const the same with let in Swift
   final className = 'Calculator'; // can set value one time only
   late String? lateVariable;      // late mean can set value after init
   dynamic dynamicVariable;        // Undefine type until runtime, not compile-time. We can use dynamic type when work with Json if can't define field type.
 
-  Object myObject = 'Hello';      // Define type when compile-time. Used Object when you need a variable that can hold any object, the same with Any and AnyObject in Swift.
-  // When you want to store objects of different types in the same List or Map:
-  List<Object> items = [1, 'hello', 3.14, true];
-  Map<String, Object> myData = {
-    'name': 'Dart',
-    'age': 5,
-    'is_cool': true
-  };
+  Object myObject = 'Hello';      // Define type when compile-time. Used Object when you need a variable that can hold any object, need to cast first and use. The same type with Any and AnyObject in Swift.
+  List<Object> items = [1, 'hello', 3.14, true]; // When you want to store objects of different types in the same List or Map:
 
   double? firstNumber;
   var secondNumber = 0.0;
@@ -158,6 +152,19 @@ class Calculator {
 
   List<int> firstNumbers;
   List<int> secondNumbers;
+
+ //Map literal. Map is the same with dictionary in Swift
+  var anMapNumber = {
+    'one': 1,
+    'two': 2,
+    'three': 3
+  };
+
+  Map<String, Object> myData = {
+    'name': 'Hao Nguyen',
+    'age': 30,
+    'isDeveloper': true
+  };
 
   Calculator(this.firstNumber, this.secondNumber, this.firstNumbers, this.secondNumbers);
 
@@ -208,19 +215,62 @@ class Calculator {
 
   void forEachList() {
     List<String> numberLetters = ['Mot', 'Hai', 'Ba', 'Bon', 'Nam'];
-    numberLetters.forEach((letter) {
+    for (var letter in numberLetters) {
       print(letter);
-    });
+    }
 
     print('\n');
   }
 
   // Use Object type when you want to write a function that can accept any data type as an argument:
-
   void showMeTypeOf(Object param) {
     print('The type of $param is ${param.runtimeType}');
   }
+
+  // Map Operator
+  Map<String, int> createScores()  {
+    var scores = <String, int>{};
+    scores['Football'] = 8; // Add element to map
+    scores['Basketball'] = 9;
+    scores['Baseball'] = 10;
+    return scores;
+  }
+
+  String getValueOfMyDataMap(String key) {
+    return 'Value of key $key is ${myData[key]}, type is ${myData[key].runtimeType}\n';
+  } 
+  
+  void showKeyAndValueFromMyDataMap() {
+    myData.forEach((key, value) {
+      print('Key: $key, Value: $value');
+    });
+  }
+
+  Map<String, Object> updateMyDataMap() {
+    myData['city'] = 'Hochiminh City'; // If the key does not exist, it will be added
+    myData['age'] = 29;                // If it exists, the value will be updated.
+    myData.remove('isDeveloper');      // Remove element with key
+    // myData.clear();                     // Remove all elements
+    // myData.length;                      // Get number of elements
+    // myData.keys;                        // Get all keys
+    // myData.values;                      // Get all values
+    // myData.isNotEmpty;                  // Check if the map is not empty
+    // myData.isEmpty;                     // Check if the map is empty
+    // myData.containsKey('name');         // Check if the map contains a key
+    // myData.containsValue('Hao Nguyen'); // Check if the map contains a value
+    return myData;
+  }
+Map<String, int> calculateElementInMap() {
+  var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "3", "4", "8", "9", "1","4", "5", "6", "7", "8", "9", "10"];
+  print('$numbers \n');
+  var map = <String, int>{};
+  for (var number in numbers) {
+    map[number] = (map[number] ?? 0) + 1;
+  }
+  return map;
+  }
 }
+
 
 void main() { 
   var firstNumbers = [0, 1, 2, 3, 4, 5];
@@ -246,4 +296,14 @@ void main() {
   cal.showMeTypeOf('Hello');
   cal.showMeTypeOf(10.0);
   cal.showMeTypeOf(true);
+
+  print('Constructor Map value: ${cal.createScores()}\n');
+  print(cal.getValueOfMyDataMap('name'));
+  cal.showKeyAndValueFromMyDataMap();
+  print('\n');
+  print('Old Map value: ${cal.myData}\n');
+  print('Update Map value: ${cal.updateMyDataMap()}\n');
+
+  print('Calculate Element InMap: ${cal.calculateElementInMap()}\n');
 }
+
