@@ -1,4 +1,7 @@
 
+//======================
+// MARK: PROPERTIES
+//====================== 
   class Car {
     String? brandName;
     String? modelName;
@@ -76,8 +79,10 @@
   // }
 
 
-  //////////////////////////////// Inheritance ///////////////////////////////////////
-  
+
+//======================
+// MARK: INHERITANCE
+//======================  
   class Verhical {
       String? name;
       String? color;
@@ -112,7 +117,9 @@
   //   print('Characteristic: ${bicycle.characteristic}');
   // }
 
-//////////////////////////////// Abstract class ///////////////////////////////////////
+//======================
+// MARK: ABSTRACT CLASS
+//======================
  abstract class Shape {
   double calculateArea();
   void draw() {
@@ -135,15 +142,17 @@
 //   rectangle.draw();
 //  }
 
-//////////////////////////////// Home Work ///////////////////////////////////////
+//====================
+// MARK: HOME WORK
+//====================
 
 class Calculator {
-  static const double pi = 3.14;  // const the same with let in Swift
-  final className = 'Calculator'; // can set value one time only
-  late String? lateVariable;      // late mean can set value after init
-  dynamic dynamicVariable;        // Undefine type until runtime, not compile-time. We can use dynamic type when work with Json if can't define field type.
+  static const double pi = 3.14;  /// const the same with let in Swift
+  final className = 'Calculator'; /// can set value one time only
+  late String? lateVariable;      /// late mean can set value after init
+  dynamic dynamicVariable;        /// Undefine type until runtime, not compile-time. We can use dynamic type when work with Json if can't define field type.
 
-  Object myObject = 'Hello';      // Define type when compile-time. Used Object when you need a variable that can hold any object, need to cast first and use. The same type with Any and AnyObject in Swift.
+  Object myObject = 'Hello';      /// Define type when compile-time. Used Object when you need a variable that can hold any object, need to cast first and use. The same type with Any and AnyObject in Swift.
   List<Object> items = [1, 'hello', 3.14, true]; // When you want to store objects of different types in the same List or Map:
 
   double? firstNumber;
@@ -153,7 +162,7 @@ class Calculator {
   List<int> firstNumbers;
   List<int> secondNumbers;
 
- //Map literal. Map is the same with dictionary in Swift
+ /// Map literal. Map is the same with dictionary in Swift
   var anMapNumber = {
     'one': 1,
     'two': 2,
@@ -170,6 +179,20 @@ class Calculator {
 
   double add() => firstNumber! + secondNumber;
   double subtract() => firstNumber! - secondNumber;
+
+  // FIXME: This function sometimes returns a null value
+  // double subtract2() {
+  //   if (firstNumber != null) {
+  //     try {
+  //       return firstNumber - secondNumber;
+  //     } catch (e) {
+  //       return 0.0;
+  //     }
+  //   } else {
+  //     return 0.0;
+  //   }
+  // }
+
   double multiply() => firstNumber! * secondNumber;
   double divide() => firstNumber! / secondNumber;
   int divideInterger() => firstNumber! ~/ secondNumber;
@@ -178,6 +201,9 @@ class Calculator {
   bool modWithSecondNumber() => secondNumber % 2 == 0;
   List<int> combineList() => [...firstNumbers, ...secondNumbers];
 
+//====================
+// MARK: FOR LOOP
+//====================
   List<int>? filterWith(bool filterEvenNumber, List<int> yourNumbers) {
     var eventNumberTmp = <int>[];
     var oddNumberTmp = <int>[];
@@ -222,12 +248,14 @@ class Calculator {
     print('\n');
   }
 
-  // Use Object type when you want to write a function that can accept any data type as an argument:
+  /// Use Object type when you want to write a function that can accept any data type as an argument:
   void showMeTypeOf(Object param) {
     print('The type of $param is ${param.runtimeType}');
   }
 
-  // Map Operator
+//====================
+// MARK: MAP OPERATOR
+//====================
   Map<String, int> createScores()  {
     var scores = <String, int>{};
     scores['Football'] = 8; // Add element to map
@@ -271,39 +299,97 @@ Map<String, int> calculateElementInMap() {
   }
 }
 
+//====================
+// MARK: TRY CATCH
+//====================
+/* 
+try: Put risky code here.
+catch: Catch and handle errors to prevent the program from crashing.
+on: Catch a specific type of error for specialized handling.
+finally: Run cleanup code, always executed.
+throw: Proactively generate an error according to your logic.
+ */
+void tryCatchVoid() {
+  try {
+    var result = 10 ~/ 0;
+    print('tryCatch result: $result');
+  } on FormatException {
+    print('Error: FormatException');
+  } catch (error) {
+    print('tryCatch has other error: $error');
+  } finally {
+    print('tryCatch finally'); // Whether there is an error or not, this block still runs
+  }
+  print('continue other part of the function');
+}
+
+void voidHasThrowException(String password) {
+  if (password != "123") {
+    throw Exception('Password incorrect!'); // throw exception
+  } else {
+    print('Password correct!');
+  }
+}
+
+void callVoidHasThrowException() {
+  try {
+    voidHasThrowException('1234');
+  } catch (error) {
+    print('callVoidHasThrowException Error: $error');
+  }
+}
+
+void tryCatchWithStackTrace() {
+  try {
+    var result = int.parse('not a number');
+    print('tryCatchWithStackTrace result: $result');
+  } catch (e, s) { // Add second parameter to capture StackTrace
+    print('Error: $e');
+    print('Stack Trace: $s');
+  }
+  print('continue fuction');
+}
+
+// MARK: MAIN
 
 void main() { 
-  var firstNumbers = [0, 1, 2, 3, 4, 5];
-  var secondNumber = [6 , 7, 8, 9, 10];
-  var cal = Calculator(10, 3, firstNumbers, secondNumber);
+  /// Variable
+  // var firstNumbers = [0, 1, 2, 3, 4, 5];
+  // var secondNumber = [6 , 7, 8, 9, 10];
+  // var cal = Calculator(10, 3, firstNumbers, secondNumber);
 
-  print('add: ${cal.firstNumber} + ${cal.secondNumber} = ${cal.add()}\n');
-  print('subtract: ${cal.firstNumber} - ${cal.secondNumber} = ${cal.subtract()}\n');
-  print('multiply: ${cal.firstNumber} * ${cal.secondNumber} = ${cal.multiply()}\n');
-  print('divide: ${cal.firstNumber} / ${cal.secondNumber} = ${cal.divide()}\n');
-  print('divideInterger: ${cal.firstNumber} ~/ ${cal.secondNumber} = ${cal.divideInterger()}\n');
-  print('mod: ${cal.firstNumber} % ${cal.secondNumber} = ${cal.mod()}\n');
-  print('modWithFirstNumber: ${cal.firstNumber}, %2 = ${cal.modWithFirstNumber() ? 'even number' : 'odd number'}\n');
-  print('modWithSecondNumber: ${cal.secondNumber}, %2 = ${cal.modWithSecondNumber() ? 'even number' : 'odd number'}\n');
-  print('Combine list: ${cal.combineList()}');
-  print('Filter even number: ${cal.filterWith(true, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}');
-  print('Filter odd number: ${cal.filterWith(false, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}\n');
+  // print('add: ${cal.firstNumber} + ${cal.secondNumber} = ${cal.add()}\n');
+  // print('subtract: ${cal.firstNumber} - ${cal.secondNumber} = ${cal.subtract()}\n');
+  // print('multiply: ${cal.firstNumber} * ${cal.secondNumber} = ${cal.multiply()}\n');
+  // print('divide: ${cal.firstNumber} / ${cal.secondNumber} = ${cal.divide()}\n');
+  // print('divideInterger: ${cal.firstNumber} ~/ ${cal.secondNumber} = ${cal.divideInterger()}\n');
+  // print('mod: ${cal.firstNumber} % ${cal.secondNumber} = ${cal.mod()}\n');
+  // print('modWithFirstNumber: ${cal.firstNumber}, %2 = ${cal.modWithFirstNumber() ? 'even number' : 'odd number'}\n');
+  // print('modWithSecondNumber: ${cal.secondNumber}, %2 = ${cal.modWithSecondNumber() ? 'even number' : 'odd number'}\n');
+  // print('Combine list: ${cal.combineList()}');
+  // print('Filter even number: ${cal.filterWith(true, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}');
+  // print('Filter odd number: ${cal.filterWith(false, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}\n');
 
-  cal.forUpper();
-  cal.forList();
-  cal.forEachList();
+  /// For loop
+  // cal.forUpper();
+  // cal.forList();
+  // cal.forEachList();
 
-  cal.showMeTypeOf('Hello');
-  cal.showMeTypeOf(10.0);
-  cal.showMeTypeOf(true);
+  /// Map
+  // cal.showMeTypeOf('Hello');
+  // cal.showMeTypeOf(10.0);
+  // cal.showMeTypeOf(true);
+  // print('Constructor Map value: ${cal.createScores()}\n');
+  // print(cal.getValueOfMyDataMap('name'));
+  // cal.showKeyAndValueFromMyDataMap();
+  // print('\n');
+  // print('Old Map value: ${cal.myData}\n');
+  // print('Update Map value: ${cal.updateMyDataMap()}\n');
+  // print('Calculate Element InMap: ${cal.calculateElementInMap()}\n');
 
-  print('Constructor Map value: ${cal.createScores()}\n');
-  print(cal.getValueOfMyDataMap('name'));
-  cal.showKeyAndValueFromMyDataMap();
-  print('\n');
-  print('Old Map value: ${cal.myData}\n');
-  print('Update Map value: ${cal.updateMyDataMap()}\n');
-
-  print('Calculate Element InMap: ${cal.calculateElementInMap()}\n');
+  /// Try Catch
+  // tryCatchVoid();
+  callVoidHasThrowException();
+  tryCatchWithStackTrace();
 }
 
