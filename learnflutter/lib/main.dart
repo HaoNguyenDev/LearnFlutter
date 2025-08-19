@@ -177,6 +177,21 @@ class Calculator {
 
   Calculator(this.firstNumber, this.secondNumber, this.firstNumbers, this.secondNumbers);
 
+/* 
+Toán tử	Ý nghĩa	Ví dụ	Tương đương với
++=	Phép gán cộng	x += y	x = x + y
+-=	Phép gán trừ	x -= y	x = x - y
+*=	Phép gán nhân	x *= y	x = x * y
+/=	Phép gán chia	x /= y	x = x / y
+~/=	Phép gán chia lấy nguyên	x ~/= y	x = x ~/ y
+%=	Phép gán chia lấy dư	x %= y	x = x % y
+<<=	Phép gán dịch trái	x <<= y	x = x << y
+>>=	Phép gán dịch phải	x >>= y	x = x >> y
+&=	Phép gán AND	x &= y	x = x & y
+^=	Phép gán XOR	x ^= y	x = x ^ y
+|=	Phép gán OR	  x |= y	x = x | y 
+*/
+
   double add() => firstNumber! + secondNumber;
   double subtract() => firstNumber! - secondNumber;
   double multiply() => firstNumber! * secondNumber;
@@ -337,7 +352,8 @@ void tryCatchWithStackTrace() {
 }
 
 // MARK: MAIN
-// void main() { 
+/* 
+void main() { 
   /// Variable
   // var firstNumbers = [0, 1, 2, 3, 4, 5];
   // var secondNumber = [6 , 7, 8, 9, 10];
@@ -376,7 +392,8 @@ void tryCatchWithStackTrace() {
   // tryCatchVoid();
   // callVoidHasThrowException();
   // tryCatchWithStackTrace();
-// }
+} 
+*/ 
 
 
 //====================
@@ -446,6 +463,42 @@ Future<void> userDoLogin(String email, String password) async {
 }
 
 //MARK: MAIN
-void main() async {
-  await userDoLogin('user1@gmail.com', 'password1');
+// void main() async {
+//   await userDoLogin('user1@gmail.com', 'password1');
+// }
+
+//=======================================
+// MARK: Cascade Nation
+//=======================================
+
+class Customer {
+  String name = '';
+  String city = '';
+  void printInfo() {
+    print('$name từ $city');
+  }
+}
+
+class CascadeNationExample {
+  
+  void exampleCode() {
+    var numbers = <int>[];
+    numbers.add(1);
+    numbers.add(2);
+    numbers.add(3);
+    // Use cascade notation
+    numbers..add(4)..add(5)..add(6);
+
+    // Use cascade notation
+    var newCustomer = Customer()
+      ..name = 'Bob'
+      ..city = 'London'
+      ..printInfo();
+  }
+}
+
+//MARK: MAIN
+void main() {
+  var example = CascadeNationExample();
+  example.exampleCode();
 }
