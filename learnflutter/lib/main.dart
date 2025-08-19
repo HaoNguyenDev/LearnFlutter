@@ -179,20 +179,6 @@ class Calculator {
 
   double add() => firstNumber! + secondNumber;
   double subtract() => firstNumber! - secondNumber;
-
-  // FIXME: This function sometimes returns a null value
-  // double subtract2() {
-  //   if (firstNumber != null) {
-  //     try {
-  //       return firstNumber - secondNumber;
-  //     } catch (e) {
-  //       return 0.0;
-  //     }
-  //   } else {
-  //     return 0.0;
-  //   }
-  // }
-
   double multiply() => firstNumber! * secondNumber;
   double divide() => firstNumber! / secondNumber;
   int divideInterger() => firstNumber! ~/ secondNumber;
@@ -313,8 +299,8 @@ void tryCatchVoid() {
   try {
     var result = 10 ~/ 0;
     print('tryCatch result: $result');
-  } on FormatException {
-    print('Error: FormatException');
+  } on FormatException catch (error) {
+    print('Error: $error');
   } catch (error) {
     print('tryCatch has other error: $error');
   } finally {
@@ -343,16 +329,15 @@ void tryCatchWithStackTrace() {
   try {
     var result = int.parse('not a number');
     print('tryCatchWithStackTrace result: $result');
-  } catch (e, s) { // Add second parameter to capture StackTrace
-    print('Error: $e');
-    print('Stack Trace: $s');
+  } catch (error, stackTrace) { // Add second parameter to capture StackTrace
+    print('Error: $error');
+    print('Stack Trace: $stackTrace');
   }
   print('continue fuction');
 }
 
 // MARK: MAIN
-
-void main() { 
+// void main() { 
   /// Variable
   // var firstNumbers = [0, 1, 2, 3, 4, 5];
   // var secondNumber = [6 , 7, 8, 9, 10];
@@ -389,7 +374,78 @@ void main() {
 
   /// Try Catch
   // tryCatchVoid();
-  callVoidHasThrowException();
-  tryCatchWithStackTrace();
+  // callVoidHasThrowException();
+  // tryCatchWithStackTrace();
+// }
+
+
+//====================
+// MARK: EXCEPTION
+//====================
+
+/// Implement exceptions
+
+class InvalidEmailException implements Exception {
+  final String message;
+  InvalidEmailException(this.message);
 }
 
+class InvalidPasswordException implements Exception {
+  final String message;
+  InvalidPasswordException(this.message);
+}
+
+class UserNotFoundException implements Exception {
+  final String message;
+  UserNotFoundException(this.message);
+}
+
+class UserInfo {
+  String email;
+  String name;
+  String token;
+  UserInfo(this.email,this.name, this.token);
+}
+
+final Map<String, String> mockLoginInfo = {
+'user1@gmail.com' : 'password1',
+'user2@gmail.com' : 'password2',
+'user3@gmail.com' : 'password3',
+};
+
+Future<UserInfo> callLoginApi(String email, String password) async {
+  print('callLoginApi...');
+  await Future.delayed(Duration(seconds: 2));
+  if (!email.contains('@')) {
+    throw InvalidEmailException('Invalid email');
+  } 
+
+  if (!mockLoginInfo.keys.contains(email)) {
+    throw UserNotFoundException('User not found');
+  }
+
+  if (mockLoginInfo[email] != password) {
+    throw InvalidPasswordException('Invalid password');
+  }
+  return UserInfo(email, 'Hao Nguyen', 'token7346523478');
+}
+
+Future<void> userDoLogin(String email, String password) async {
+  try {
+    var userInfo = await callLoginApi(email, password);
+    print('Login success! Hi ${userInfo.name} email: ${userInfo.email}');
+  } on InvalidEmailException catch (error) {
+    print('InvalidEmailException: $error');
+  } on InvalidPasswordException catch (error) {
+    print('InvalidPasswordException: $error');
+  } on UserNotFoundException catch (error) {
+    print('UserNotFoundException: $error');
+  } finally {
+    print('userDoLogin finally');
+  }
+}
+
+//MARK: MAIN
+void main() async {
+  await userDoLogin('user1@gmail.com', 'password1');
+}
