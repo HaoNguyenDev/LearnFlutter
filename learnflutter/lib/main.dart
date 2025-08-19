@@ -468,7 +468,7 @@ Future<void> userDoLogin(String email, String password) async {
 // }
 
 //=======================================
-// MARK: Cascade Nation
+// MARK: Cascade Notion
 //=======================================
 
 class Customer {
@@ -498,7 +498,71 @@ class CascadeNationExample {
 }
 
 //MARK: MAIN
+/*
 void main() {
   var example = CascadeNationExample();
   example.exampleCode();
 }
+*/
+
+//===============
+// MARK: GENERIC
+//===============
+
+class Stack<T> {
+  List<T> stacks;
+
+  Stack(this.stacks);
+
+  void push(T stack) {
+    stacks.add(stack);
+  } 
+
+  T? pop() {
+    return stacks.isNotEmpty ? stacks.removeLast() : null;
+  }
+
+  List<T> getStacks() => stacks;
+}
+
+class Queue<T> {
+  List<T> queues;
+  Queue(this.queues);
+
+  void enqueue(T queue) {
+    queues.add(queue);
+  }
+
+  T? dequeue() {
+    return queues.isNotEmpty ? queues.removeAt(0) : null;
+  }
+
+  List<T> getQueues() => queues;
+}
+
+void main() {
+  var st = Stack<String>([]);
+  print('Stack list = ${st.getStacks()}');
+  st.push('stack 1');
+  st.push('stack 2');
+  st.push('stack 3');
+  st.push('stack 4');
+  print('Stack list = ${st.getStacks()}');
+  print('Pop: ${st.pop()}');
+  print('Pop: ${st.pop()}');
+  print('Stack list = ${st.getStacks()}');
+
+  print('=================================');
+
+  var queue = Queue<String>([]);
+  print('Queue list = ${queue.getQueues()}');
+  queue.enqueue('queue 1');
+  queue.enqueue('queue 2');
+  queue.enqueue('queue 3');
+  queue.enqueue('queue 4');
+  print('Queue list = ${queue.getQueues()}');
+  print('Dequeue: ${queue.dequeue()}');
+  print('Dequeue: ${queue.dequeue()}');
+  print('Queue list = ${queue.getQueues()}');
+}
+
