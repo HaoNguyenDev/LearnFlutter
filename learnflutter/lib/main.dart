@@ -540,6 +540,11 @@ class Queue<T> {
   List<T> getQueues() => queues;
 }
 
+T showGenericType<T>(T value) {
+  print('showGenericType - The type of $value is ${value.runtimeType}');
+  return value;
+}
+
 void main() {
   var st = Stack<String>([]);
   print('Stack list = ${st.getStacks()}');
@@ -564,5 +569,9 @@ void main() {
   print('Dequeue: ${queue.dequeue()}');
   print('Dequeue: ${queue.dequeue()}');
   print('Queue list = ${queue.getQueues()}');
+
+  showGenericType(3.14);
+  showGenericType("Hello Flutter!");
+  showGenericType(true);
 }
 
