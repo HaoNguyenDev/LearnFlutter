@@ -1,11 +1,25 @@
 class Calculator {
-  static const double pi = 3.14;  /// const the same with let in Swift
-  final className = 'Calculator'; /// can set value one time only
-  late String? lateVariable;      /// late mean can set value after init
-  dynamic dynamicVariable;        /// Undefine type until runtime, not compile-time. We can use dynamic type when work with Json if can't define field type.
+  static const double pi = 3.14;
 
-  Object myObject = 'Hello';      /// Define type when compile-time. Used Object when you need a variable that can hold any object, need to cast first and use. The same type with Any and AnyObject in Swift.
-  List<Object> items = [1, 'hello', 3.14, true]; // When you want to store objects of different types in the same List or Map:
+  /// const the same with let in Swift
+  final className = 'Calculator';
+
+  /// can set value one time only
+  late String? lateVariable;
+
+  /// late mean can set value after init
+  dynamic dynamicVariable;
+
+  /// Undefine type until runtime, not compile-time. We can use dynamic type when work with Json if can't define field type.
+  Object myObject = 'Hello';
+
+  /// Define type when compile-time. Used Object when you need a variable that can hold any object, need to cast first and use. The same type with Any and AnyObject in Swift.
+  List<Object> items = [
+    1,
+    'hello',
+    3.14,
+    true,
+  ]; // When you want to store objects of different types in the same List or Map:
 
   double? firstNumber;
   var secondNumber = 0.0;
@@ -14,20 +28,21 @@ class Calculator {
   List<int> firstNumbers;
   List<int> secondNumbers;
 
- /// Map literal. Map is the same with dictionary in Swift
-  var anMapNumber = {
-    'one': 1,
-    'two': 2,
-    'three': 3
-  };
+  /// Map literal. Map is the same with dictionary in Swift
+  var anMapNumber = {'one': 1, 'two': 2, 'three': 3};
 
   Map<String, Object> myData = {
     'name': 'Hao Nguyen',
     'age': 30,
-    'isDeveloper': true
+    'isDeveloper': true,
   };
 
-  Calculator(this.firstNumber, this.secondNumber, this.firstNumbers, this.secondNumbers);
+  Calculator(
+    this.firstNumber,
+    this.secondNumber,
+    this.firstNumbers,
+    this.secondNumbers,
+  );
 
   /* 
   Toán tử	Ý nghĩa	Ví dụ	Tương đương với
@@ -60,13 +75,13 @@ class Calculator {
   List<int>? filterWith(bool filterEvenNumber, List<int> yourNumbers) {
     var eventNumberTmp = <int>[];
     var oddNumberTmp = <int>[];
-      for (var number in yourNumbers) {
-        if (number % 2 == 0) {
-          eventNumberTmp.add(number);
-        } else {
-          oddNumberTmp.add(number);
-        }
+    for (var number in yourNumbers) {
+      if (number % 2 == 0) {
+        eventNumberTmp.add(number);
+      } else {
+        oddNumberTmp.add(number);
       }
+    }
     return filterEvenNumber ? eventNumberTmp : oddNumberTmp;
   }
 
@@ -74,7 +89,7 @@ class Calculator {
     for (var i = 0; i <= 10; i++) {
       print(i);
     }
-     print('\n');
+    print('\n');
   }
 
   void forList() {
@@ -109,7 +124,7 @@ class Calculator {
   //====================
   // MARK: MAP OPERATOR
   //====================
-  Map<String, int> createScores()  {
+  Map<String, int> createScores() {
     var scores = <String, int>{};
     scores['Football'] = 8; // Add element to map
     scores['Basketball'] = 9;
@@ -119,8 +134,8 @@ class Calculator {
 
   String getValueOfMyDataMap(String key) {
     return 'Value of key $key is ${myData[key]}, type is ${myData[key].runtimeType}\n';
-  } 
-  
+  }
+
   void showKeyAndValueFromMyDataMap() {
     myData.forEach((key, value) {
       print('Key: $key, Value: $value');
@@ -128,9 +143,10 @@ class Calculator {
   }
 
   Map<String, Object> updateMyDataMap() {
-    myData['city'] = 'Hochiminh City'; // If the key does not exist, it will be added
-    myData['age'] = 29;                // If it exists, the value will be updated.
-    myData.remove('isDeveloper');      // Remove element with key
+    myData['city'] =
+        'Hochiminh City'; // If the key does not exist, it will be added
+    myData['age'] = 29; // If it exists, the value will be updated.
+    myData.remove('isDeveloper'); // Remove element with key
     // myData.clear();                     // Remove all elements
     // myData.length;                      // Get number of elements
     // myData.keys;                        // Get all keys
@@ -141,12 +157,36 @@ class Calculator {
     // myData.containsValue('Hao Nguyen'); // Check if the map contains a value
     return myData;
   }
+
   Map<String, int> calculateElementInMap() {
-    var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "3", "4", "8", "9", "1","4", "5", "6", "7", "8", "9", "10"];
+    var numbers = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "3",
+      "4",
+      "8",
+      "9",
+      "1",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+    ];
     print('$numbers \n');
     var map = <String, int>{};
     for (var number in numbers) {
-     map[number] = (map[number] ?? 0) + 1;
+      map[number] = (map[number] ?? 0) + 1;
     }
     return map;
   }
@@ -171,7 +211,9 @@ void tryCatchVoid() {
   } catch (error) {
     print('tryCatch has other error: $error');
   } finally {
-    print('tryCatch finally'); // Whether there is an error or not, this block still runs
+    print(
+      'tryCatch finally',
+    ); // Whether there is an error or not, this block still runs
   }
   print('continue other part of the function');
 }
@@ -196,7 +238,8 @@ void tryCatchWithStackTrace() {
   try {
     var result = int.parse('not a number');
     print('tryCatchWithStackTrace result: $result');
-  } catch (error, stackTrace) { // Add second parameter to capture StackTrace
+  } catch (error, stackTrace) {
+    // Add second parameter to capture StackTrace
     print('Error: $error');
     print('Stack Trace: $stackTrace');
   }
