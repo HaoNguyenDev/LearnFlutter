@@ -1,25 +1,40 @@
-import 'class_and_properties_example.dart';
-import 'operator_example.dart';
+import 'package:learnflutter/class_and_properties_example.dart';
+import 'package:learnflutter/operator_example.dart';
+import 'package:learnflutter/exception_example.dart';
 
 // MARK: MAIN
- 
-void main() { 
+void main() {
+  /*
   // Variable
   var firstNumbers = [0, 1, 2, 3, 4, 5];
-  var secondNumber = [6 , 7, 8, 9, 10];
+  var secondNumber = [6, 7, 8, 9, 10];
   var cal = Calculator(10, 3, firstNumbers, secondNumber);
 
   print('add: ${cal.firstNumber} + ${cal.secondNumber} = ${cal.add()}\n');
-  print('subtract: ${cal.firstNumber} - ${cal.secondNumber} = ${cal.subtract()}\n');
-  print('multiply: ${cal.firstNumber} * ${cal.secondNumber} = ${cal.multiply()}\n');
+  print(
+    'subtract: ${cal.firstNumber} - ${cal.secondNumber} = ${cal.subtract()}\n',
+  );
+  print(
+    'multiply: ${cal.firstNumber} * ${cal.secondNumber} = ${cal.multiply()}\n',
+  );
   print('divide: ${cal.firstNumber} / ${cal.secondNumber} = ${cal.divide()}\n');
-  print('divideInterger: ${cal.firstNumber} ~/ ${cal.secondNumber} = ${cal.divideInterger()}\n');
+  print(
+    'divideInterger: ${cal.firstNumber} ~/ ${cal.secondNumber} = ${cal.divideInterger()}\n',
+  );
   print('mod: ${cal.firstNumber} % ${cal.secondNumber} = ${cal.mod()}\n');
-  print('modWithFirstNumber: ${cal.firstNumber}, %2 = ${cal.modWithFirstNumber() ? 'even number' : 'odd number'}\n');
-  print('modWithSecondNumber: ${cal.secondNumber}, %2 = ${cal.modWithSecondNumber() ? 'even number' : 'odd number'}\n');
+  print(
+    'modWithFirstNumber: ${cal.firstNumber}, %2 = ${cal.modWithFirstNumber() ? 'even number' : 'odd number'}\n',
+  );
+  print(
+    'modWithSecondNumber: ${cal.secondNumber}, %2 = ${cal.modWithSecondNumber() ? 'even number' : 'odd number'}\n',
+  );
   print('Combine list: ${cal.combineList()}');
-  print('Filter even number: ${cal.filterWith(true, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}');
-  print('Filter odd number: ${cal.filterWith(false, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}\n');
+  print(
+    'Filter even number: ${cal.filterWith(true, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}',
+  );
+  print(
+    'Filter odd number: ${cal.filterWith(false, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}\n',
+  );
 
   // For loop
   cal.forUpper();
@@ -37,93 +52,39 @@ void main() {
   print('Old Map value: ${cal.myData}\n');
   print('Update Map value: ${cal.updateMyDataMap()}\n');
   print('Calculate Element InMap: ${cal.calculateElementInMap()}\n');
+*/
 
+/*
   // Try Catch
   tryCatchVoid();
   callVoidHasThrowException();
   tryCatchWithStackTrace();
+*/
 
+/*
+  // Class and extends abstract class
   var car = Car('Vinfast', 'VF9', 2025, 'white', 'VietNam', true, 200);
   car.messageOfBrand();
   print(car.exportVerhicalInfo());
 
   print('\n');
 
-  var bicycle = Bicycle('Phuong Hoang', 'MiniScooter', 2022, 'white', 'VietNam', 30);
+  var bicycle = Bicycle(
+    'Phuong Hoang',
+    'MiniScooter',
+    2022,
+    'white',
+    'VietNam',
+    30,
+  );
   bicycle.messageOfBrand();
   print(bicycle.exportVerhicalInfo());
+*/
+ 
+ //Exception
+ var callException = CallFunctionException();
+ callException.testExceptionResult();
 }
-
-//====================
-// MARK: EXCEPTION
-//====================
-
-/// Implement exceptions
-
-class InvalidEmailException implements Exception {
-  final String message;
-  InvalidEmailException(this.message);
-}
-
-class InvalidPasswordException implements Exception {
-  final String message;
-  InvalidPasswordException(this.message);
-}
-
-class UserNotFoundException implements Exception {
-  final String message;
-  UserNotFoundException(this.message);
-}
-
-class UserInfo {
-  String email;
-  String name;
-  String token;
-  UserInfo(this.email,this.name, this.token);
-}
-
-final Map<String, String> mockLoginInfo = {
-'user1@gmail.com' : 'password1',
-'user2@gmail.com' : 'password2',
-'user3@gmail.com' : 'password3',
-};
-
-Future<UserInfo> callLoginApi(String email, String password) async {
-  print('callLoginApi...');
-  await Future.delayed(Duration(seconds: 2));
-  if (!email.contains('@')) {
-    throw InvalidEmailException('Invalid email');
-  } 
-
-  if (!mockLoginInfo.keys.contains(email)) {
-    throw UserNotFoundException('User not found');
-  }
-
-  if (mockLoginInfo[email] != password) {
-    throw InvalidPasswordException('Invalid password');
-  }
-  return UserInfo(email, 'Hao Nguyen', 'token7346523478');
-}
-
-Future<void> userDoLogin(String email, String password) async {
-  try {
-    var userInfo = await callLoginApi(email, password);
-    print('Login success! Hi ${userInfo.name} email: ${userInfo.email}');
-  } on InvalidEmailException catch (error) {
-    print('InvalidEmailException: $error');
-  } on InvalidPasswordException catch (error) {
-    print('InvalidPasswordException: $error');
-  } on UserNotFoundException catch (error) {
-    print('UserNotFoundException: $error');
-  } finally {
-    print('userDoLogin finally');
-  }
-}
-
-//MARK: MAIN
-// void main() async {
-//   await userDoLogin('user1@gmail.com', 'password1');
-// }
 
 //=======================================
 // MARK: Cascade Notion
@@ -138,14 +99,16 @@ class Customer {
 }
 
 class CascadeNationExample {
-  
   void exampleCode() {
     var numbers = <int>[];
     numbers.add(1);
     numbers.add(2);
     numbers.add(3);
     // Use cascade notation
-    numbers..add(4)..add(5)..add(6);
+    numbers
+      ..add(4)
+      ..add(5)
+      ..add(6);
 
     // Use cascade notation
     // var newCustomer = Customer()
@@ -174,7 +137,7 @@ class Stack<T> {
 
   void push(T stack) {
     stacks.add(stack);
-  } 
+  }
 
   T? pop() {
     return stacks.isNotEmpty ? stacks.removeLast() : null;
@@ -234,4 +197,3 @@ void main() {
   showGenericType(true);
 }
 */
-
