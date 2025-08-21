@@ -1,6 +1,15 @@
 import 'package:logger/web.dart';
 import 'dart:math';
 
+class ApiErrorException implements Exception {
+  final String message;
+  ApiErrorException(this.message);
+  @override
+  String toString() {
+    return 'ApiErrorException: $message';
+  }
+}
+
 class AsynchronyExample {
   var logger = Logger();
   var random = Random();
@@ -13,7 +22,7 @@ class AsynchronyExample {
       var data = {'usernamer': 'Hao Nguyen', 'age': 30, 'isDeveloper': true};
       return data;
     } else {
-      throw Exception('No Data');
+      throw ApiErrorException("Failed fetch data!!!");
     }
   }
 
@@ -32,7 +41,7 @@ class AsynchronyExample {
           logger.d(data);
         })
         .catchError((error) {
-          logger.d('Đã xảy ra lỗi: $error');
+          logger.d('$error');
         });
   }
 }
