@@ -210,3 +210,59 @@ class Bicycle extends Verhical {
     );
   }
 }
+
+class TypeClass {
+  void testType() {
+    /// Integers are numbers without a decimal point. Here are some examples of defining integer literals:
+    var interger = 1;
+    var hex = 0xDEADBEEF;
+
+    /// If a number includes a decimal, it is a double. Here are some examples of defining double literals:
+    var y = 1.1;
+    var exponents = 1.42e5;
+
+    /// You can also declare a variable as a num. If you do this, the variable can have both integer and double values.
+    num x = 1; // x can have both int and double values
+    x += 2.5;
+
+    /// Integer literals are automatically converted to doubles when necessary:
+    double z = 1; // Equivalent to double z = 1.0.
+
+    /// Here's how you turn a string into a number, or vice versa:
+    // String -> int
+    var one = int.parse('1');
+    assert(one == 1);
+
+    // String -> double
+    var onePointOne = double.parse('1.1');
+    assert(onePointOne == 1.1);
+
+    // int -> String
+    String oneAsString = 1.toString();
+    assert(oneAsString == '1');
+
+    // double -> String
+    String piAsString = 3.14159.toStringAsFixed(2);
+    assert(piAsString == '3.14');
+
+    /// The int type specifies the traditional bitwise shift (<<, >>, >>>),
+    ///  complement (~), AND (&), OR (|), and XOR (^) operators, which are useful for manipulating and masking flags in bit fields.
+    ///  For example:
+    assert((3 << 1) == 6); // 0011 << 1 == 0110
+    assert((3 | 4) == 7); // 0011 | 0100 == 0111
+    assert((3 & 4) == 0); // 0011 & 0100 == 0000
+
+    /// Number literals are compile-time constants.
+    /// Many arithmetic expressions are also compile-time constants, as long as their operands are compile-time constants that evaluate to numbers.
+    const msPerSecond = 1000;
+    const secondsUntilRetry = 5;
+    const msUntilRetry = secondsUntilRetry * msPerSecond;
+
+    // MARK: STRING
+    // A Dart string (String object) holds a sequence of UTF-16 code units. You can use either single or double quotes to create a string:
+    var s1 = 'Single quotes work well for string literals.';
+    var s2 = "Double quotes work just as well.";
+    var s3 = 'It\'s easy to escape the string delimiter.';
+    var s4 = "It's even easier to use the other delimiter.";
+  }
+}
