@@ -1,6 +1,7 @@
 import 'package:learnflutter/class_and_properties_example.dart';
 import 'package:learnflutter/operator_example.dart';
 import 'package:learnflutter/exception_example.dart';
+import 'package:learnflutter/function_example.dart';
 
 // MARK: MAIN
 void main() {
@@ -54,14 +55,14 @@ void main() {
   print('Calculate Element InMap: ${cal.calculateElementInMap()}\n');
 */
 
-/*
+  /*
   // Try Catch
   tryCatchVoid();
   callVoidHasThrowException();
   tryCatchWithStackTrace();
 */
 
-/*
+  /*
   // Class and extends abstract class
   var car = Car('Vinfast', 'VF9', 2025, 'white', 'VietNam', true, 200);
   car.messageOfBrand();
@@ -80,120 +81,36 @@ void main() {
   bicycle.messageOfBrand();
   print(bicycle.exportVerhicalInfo());
 */
- 
- //Exception
- var callException = CallFunctionException();
- callException.testExceptionResult();
-}
-
-//=======================================
-// MARK: Cascade Notion
-//=======================================
-
-class Customer {
-  String name = '';
-  String city = '';
-  void printInfo() {
-    print('$name từ $city');
-  }
-}
-
-class CascadeNationExample {
-  void exampleCode() {
-    var numbers = <int>[];
-    numbers.add(1);
-    numbers.add(2);
-    numbers.add(3);
-    // Use cascade notation
-    numbers
-      ..add(4)
-      ..add(5)
-      ..add(6);
-
-    // Use cascade notation
-    // var newCustomer = Customer()
-    //   ..name = 'Bob'
-    //   ..city = 'London'
-    //   ..printInfo();
-  }
-}
-
-//MARK: MAIN
-/*
-void main() {
-  var example = CascadeNationExample();
-  example.exampleCode();
-}
-*/
-
-//===============
-// MARK: GENERIC
-//===============
-
-class Stack<T> {
-  List<T> stacks;
-
-  Stack(this.stacks);
-
-  void push(T stack) {
-    stacks.add(stack);
-  }
-
-  T? pop() {
-    return stacks.isNotEmpty ? stacks.removeLast() : null;
-  }
-
-  List<T> getStacks() => stacks;
-}
-
-class Queue<T> {
-  List<T> queues;
-  Queue(this.queues);
-
-  void enqueue(T queue) {
-    queues.add(queue);
-  }
-
-  T? dequeue() {
-    return queues.isNotEmpty ? queues.removeAt(0) : null;
-  }
-
-  List<T> getQueues() => queues;
-}
-
-T showGenericType<T>(T value) {
-  print('showGenericType - The type of $value is ${value.runtimeType}');
-  return value;
-}
 
 /*
-void main() {
-  var st = Stack<String>([]);
-  print('Stack list = ${st.getStacks()}');
-  st.push('stack 1');
-  st.push('stack 2');
-  st.push('stack 3');
-  st.push('stack 4');
-  print('Stack list = ${st.getStacks()}');
-  print('Pop: ${st.pop()}');
-  print('Pop: ${st.pop()}');
-  print('Stack list = ${st.getStacks()}');
+   //Exception
+   var callException = CallFunctionException();
+   callException.testExceptionResult();
+ */
+
+  var stackManager = Stack<String>();
+  stackManager.push('stack 1');
+  stackManager.push('stack 2');
+  stackManager.push('stack 3');
+  stackManager.push('stack 4');
+  print('Stack list = ${stackManager.getStacks()}');
+  print('Pop: ${stackManager.pop()}');
+  print('Pop: ${stackManager.pop()}');
+  print('Stack list = ${stackManager.getStacks()}');
 
   print('=================================');
 
-  var queue = Queue<String>([]);
-  print('Queue list = ${queue.getQueues()}');
-  queue.enqueue('queue 1');
-  queue.enqueue('queue 2');
-  queue.enqueue('queue 3');
-  queue.enqueue('queue 4');
-  print('Queue list = ${queue.getQueues()}');
-  print('Dequeue: ${queue.dequeue()}');
-  print('Dequeue: ${queue.dequeue()}');
-  print('Queue list = ${queue.getQueues()}');
+  var queueManager = Queue<String>();
+  queueManager.enqueue('queue 1');
+  queueManager.enqueue('queue 2');
+  queueManager.enqueue('queue 3');
+  queueManager.enqueue('queue 4');
+  print('Queue list = ${queueManager.getQueues()}');
+  print('Dequeue: ${queueManager.dequeue()}');
+  print('Dequeue: ${queueManager.dequeue()}');
+  print('Queue list = ${queueManager.getQueues()}');
 
-  showGenericType(3.14);
-  showGenericType("Hello Flutter!");
-  showGenericType(true);
+  print('=================================');
+
+  showTypeOf<String>('Hello Flutter!');
 }
-*/
