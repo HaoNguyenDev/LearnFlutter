@@ -3,6 +3,7 @@ import 'package:learnflutter/class_and_properties_example.dart';
 import 'package:learnflutter/operator_example.dart';
 import 'package:learnflutter/exception_example.dart';
 import 'package:learnflutter/function_example.dart';
+import 'asynchrony_example.dart';
 
 var logger = Logger();
 
@@ -91,6 +92,7 @@ void main() {
    callException.testExceptionResult();
  */
 
+  /*
   var stackManager = Stack<String>();
   stackManager.push('stack 1');
   stackManager.push('stack 2');
@@ -125,4 +127,8 @@ void main() {
   logger.d(exampleClass.getProperties);
   exampleClass.setProperties = "World";
   logger.d(exampleClass.getProperties);
+  */
+
+  var asyncExample = AsynchronyExample();
+  asyncExample.fetchBtnTapped();
 }
