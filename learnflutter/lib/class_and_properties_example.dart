@@ -33,6 +33,14 @@ class ExampleClass {
   set setProperties(String? value) {
     _properties = value;
   }
+
+  //MARK: Record syntax
+  (String, int) record1 = ('Hao', 1995);
+  var record2 = ('Result', Exception());
+
+  void updateRecord(String str, Exception exception) {
+    record2 = (str, exception);
+  }
 }
 
 void testExampleClass() {
