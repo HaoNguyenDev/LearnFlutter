@@ -1,3 +1,7 @@
+import 'package:logger/logger.dart';
+
+var logger = Logger();
+
 class Calculator {
   static const double pi = 3.14;
 
@@ -87,38 +91,38 @@ class Calculator {
 
   void forUpper() {
     for (var i = 0; i <= 10; i++) {
-      print(i);
+      logger.d(i);
     }
-    print('\n');
+    logger.d('\n');
   }
 
   void forList() {
     List<String> letters = ['a', 'b', 'c', 'd', 'e'];
     for (var letter in letters) {
-      print(letter);
+      logger.d(letter);
     }
 
-    print('\n');
+    logger.d('\n');
 
     List<String> names = ['An', 'Binh', 'Cuong', 'Dung', 'Yen'];
     for (var index = 0; index < names.length; index++) {
-      print('Name at index number $index is ${names[index]}');
+      logger.d('Name at index number $index is ${names[index]}');
     }
-    print('\n');
+    logger.d('\n');
   }
 
   void forEachList() {
     List<String> numberLetters = ['Mot', 'Hai', 'Ba', 'Bon', 'Nam'];
     for (var letter in numberLetters) {
-      print(letter);
+      logger.d(letter);
     }
 
-    print('\n');
+    logger.d('\n');
   }
 
   /// Use Object type when you want to write a function that can accept any data type as an argument:
   void showMeTypeOf(Object param) {
-    print('The type of $param is ${param.runtimeType}');
+    logger.d('The type of $param is ${param.runtimeType}');
   }
 
   //====================
@@ -138,7 +142,7 @@ class Calculator {
 
   void showKeyAndValueFromMyDataMap() {
     myData.forEach((key, value) {
-      print('Key: $key, Value: $value');
+      logger.d('Key: $key, Value: $value');
     });
   }
 
@@ -183,7 +187,7 @@ class Calculator {
       "9",
       "10",
     ];
-    print('$numbers \n');
+    logger.d('$numbers \n');
     var map = <String, int>{};
     for (var number in numbers) {
       map[number] = (map[number] ?? 0) + 1;
@@ -205,24 +209,24 @@ throw: Proactively generate an error according to your logic.
 void tryCatchVoid() {
   try {
     var result = 10 ~/ 0;
-    print('tryCatch result: $result');
+    logger.d('tryCatch result: $result');
   } on FormatException catch (error) {
-    print('Error: $error');
+    logger.d('Error: $error');
   } catch (error) {
-    print('tryCatch has other error: $error');
+    logger.d('tryCatch has other error: $error');
   } finally {
-    print(
+    logger.d(
       'tryCatch finally',
     ); // Whether there is an error or not, this block still runs
   }
-  print('continue other part of the function');
+  logger.d('continue other part of the function');
 }
 
 void voidHasThrowException(String password) {
   if (password != "123") {
     throw Exception('Password incorrect!'); // throw exception
   } else {
-    print('Password correct!');
+    logger.d('Password correct!');
   }
 }
 
@@ -230,18 +234,18 @@ void callVoidHasThrowException() {
   try {
     voidHasThrowException('1234');
   } catch (error) {
-    print('callVoidHasThrowException Error: $error');
+    logger.d('callVoidHasThrowException Error: $error');
   }
 }
 
 void tryCatchWithStackTrace() {
   try {
     var result = int.parse('not a number');
-    print('tryCatchWithStackTrace result: $result');
+    logger.d('tryCatchWithStackTrace result: $result');
   } catch (error, stackTrace) {
     // Add second parameter to capture StackTrace
-    print('Error: $error');
-    print('Stack Trace: $stackTrace');
+    logger.d('Error: $error');
+    logger.d('Stack Trace: $stackTrace');
   }
-  print('continue fuction');
+  logger.d('continue fuction');
 }

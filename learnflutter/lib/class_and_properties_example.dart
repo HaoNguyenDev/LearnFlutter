@@ -1,3 +1,97 @@
+import 'package:logger/logger.dart';
+
+var logger = Logger();
+
+//===========================
+// MARK: ExampleClass
+//===========================
+class ExampleClass {
+  late String title;
+  late Object value;
+
+  ExampleClass.namedConstructor(this.title, this.value);
+
+  // Redirecting constructor
+  ExampleClass.fromTitle(String title) : this.namedConstructor(title, 0);
+
+  ExampleClass({required this.title, required this.value});
+
+  // Named constructor for origin
+  ExampleClass.origin() {
+    title = 'Origin';
+    value = 0;
+  }
+
+  ExampleClass.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    value = json['value'];
+  }
+
+  //MARK: GET SET
+  String? _properties;
+  String? get getProperties => _properties;
+  set setProperties(String? value) {
+    _properties = value;
+  }
+}
+
+void testExampleClass() {
+  var exampleClass = ExampleClass(title: 'Hao Nguyen', value: 30);
+  logger.d(
+    'Title: ${exampleClass.title}, Value: ${exampleClass.value}, value type: ${exampleClass.value.runtimeType}',
+  );
+}
+
+//===========================
+// MARK: Factory Constructor
+//===========================
+/*
+Factory constructors are used when the constructor itself doesn't always create a new instance of its class.
+They can return an existing instance, an instance of a subclass, or perform complex initialization logic.
+They are declared using the factory keyword.
+*/
+/*
+class Logger {
+  final String name;
+  static final Map<String, Logger> _cache = {};
+
+  factory Logger(String name) {
+    if (_cache.containsKey(name)) {
+      return _cache[name]!;
+    } else {
+      final logger = Logger._internal(name);
+      _cache[name] = logger;
+      return logger;
+    }
+  }
+
+  Logger._internal(this.name); // Private named constructor for internal use
+}
+  logger.d('Debug message'); // For debugging purposes
+  logger.i('Info message'); // General information
+  logger.w('Warning message'); // Potential issues
+  logger.e('Error message'); // Errors that occurred
+  logger.f('f messgae');
+  logger.t('t logger');
+  
+*/
+//===========================
+// MARK: Constant Constructor
+//===========================
+/*
+Constant constructors create compile-time constant objects,
+ meaning their properties cannot be changed after initialization. 
+ They are declared using the const keyword, and all instance variables must be final
+ */
+class ImmutablePoint {
+  final double x, y;
+
+  const ImmutablePoint(this.x, this.y);
+}
+
+//===========================
+// MARK: Abstract Class
+//===========================
 abstract class Verhical {
   late String brandName;
   late String modelName;
@@ -8,7 +102,7 @@ abstract class Verhical {
   final int iso = 9001;
   static const pi = 3.14;
 
-  //MARK: Constructor
+  //MARK: Constructor example
   /// Generative constructor
   // Verhical(this.brandName, this.modelName, this.year, this.color);
   // Verhical.constrcutorNamed(this.brandName, this.modelName, this.year, this.color);
@@ -19,10 +113,10 @@ abstract class Verhical {
     int? yearValue,
     String? colorValue,
   ) {
-    this.brandName = brandNameValue;
-    this.modelName = modelNameValue;
-    this.year = yearValue;
-    this.color = colorValue;
+    brandName = brandNameValue;
+    modelName = modelNameValue;
+    year = yearValue;
+    color = colorValue;
   }
 
   /// Named constructor
@@ -32,10 +126,10 @@ abstract class Verhical {
     int? yearValue,
     String? colorValue,
   ) {
-    this.brandName = brandNameValue;
-    this.modelName = modelNameValue;
-    this.year = yearValue;
-    this.color = colorValue;
+    brandName = brandNameValue;
+    modelName = modelNameValue;
+    year = yearValue;
+    color = colorValue;
   }
 
   /// Abstract function have no function body like below
@@ -43,13 +137,15 @@ abstract class Verhical {
   void messageOfBrand();
 }
 
+//===========================
+// MARK: Inheritance
+//===========================
 class Car extends Verhical {
   static const numberOfWheel = 4;
   final String? _madeIn;
   final bool _isElectricVerhical;
   var maxSpeed = 0;
 
-  //MARK: Constructor
   Car(
     super.brandName,
     super.modelName,
@@ -60,11 +156,6 @@ class Car extends Verhical {
     this.maxSpeed,
   );
 
-  // @override
-  // void messageOfBrand() {
-  //   print('This one is Car from $brandName in $_madeIn, we just has $numberOfWheel wheels!');
-  // }
-
   @override
   String exportVerhicalInfo() {
     return 'This is $modelName of $brandName, and we make ${_isElectricVerhical ? 'electric' : 'gasoline'} verhical from $_madeIn, max speed is $maxSpeed km/h!';
@@ -72,7 +163,7 @@ class Car extends Verhical {
 
   @override
   void messageOfBrand() {
-    print(
+    logger.d(
       'VinFast\'s core message revolves around creating a sustainable future through smart, safe, and environmentally friendly electric vehicles',
     );
   }
@@ -106,7 +197,7 @@ class Bicycle extends Verhical {
 
   @override
   void messageOfBrand() {
-    print(
+    logger.d(
       'We are $brandName Bicycle, we just has $numberOfWheel wheels!, max speed is $maxSpeed km/h! Made in $_madeIn',
     );
   }

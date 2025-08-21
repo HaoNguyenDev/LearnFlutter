@@ -1,7 +1,10 @@
+import 'package:logger/logger.dart';
 import 'package:learnflutter/class_and_properties_example.dart';
 import 'package:learnflutter/operator_example.dart';
 import 'package:learnflutter/exception_example.dart';
 import 'package:learnflutter/function_example.dart';
+
+var logger = Logger();
 
 // MARK: MAIN
 void main() {
@@ -82,7 +85,7 @@ void main() {
   print(bicycle.exportVerhicalInfo());
 */
 
-/*
+  /*
    //Exception
    var callException = CallFunctionException();
    callException.testExceptionResult();
@@ -93,24 +96,33 @@ void main() {
   stackManager.push('stack 2');
   stackManager.push('stack 3');
   stackManager.push('stack 4');
-  print('Stack list = ${stackManager.getStacks()}');
-  print('Pop: ${stackManager.pop()}');
-  print('Pop: ${stackManager.pop()}');
-  print('Stack list = ${stackManager.getStacks()}');
+  logger.d(stackManager.getStacks());
+  logger.d('Stack list = ${stackManager.getStacks()}');
+  logger.d('Pop: ${stackManager.pop()}');
+  logger.d('Pop: ${stackManager.pop()}');
+  logger.d('Stack list = ${stackManager.getStacks()}');
 
-  print('=================================');
+  logger.d('=================================');
 
   var queueManager = Queue<String>();
   queueManager.enqueue('queue 1');
   queueManager.enqueue('queue 2');
   queueManager.enqueue('queue 3');
   queueManager.enqueue('queue 4');
-  print('Queue list = ${queueManager.getQueues()}');
-  print('Dequeue: ${queueManager.dequeue()}');
-  print('Dequeue: ${queueManager.dequeue()}');
-  print('Queue list = ${queueManager.getQueues()}');
+  logger.d('Queue list = ${queueManager.getQueues()}');
+  logger.d('Dequeue: ${queueManager.dequeue()}');
+  logger.d('Dequeue: ${queueManager.dequeue()}');
+  logger.d('Queue list = ${queueManager.getQueues()}');
 
-  print('=================================');
+  logger.d('=================================');
 
   showTypeOf<String>('Hello Flutter!');
+
+  testExampleClass();
+  var exampleClass = ExampleClass(title: "Hello", value: 100);
+
+  exampleClass.setProperties = "Hi";
+  logger.d(exampleClass.getProperties);
+  exampleClass.setProperties = "World";
+  logger.d(exampleClass.getProperties);
 }

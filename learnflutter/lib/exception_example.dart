@@ -1,6 +1,7 @@
 // MARK: EXCEPTION
+import 'package:logger/logger.dart';
 
-import 'dart:math';
+var logger = Logger();
 
 class CustomErrorException {
   String? errorMessage;
@@ -35,18 +36,17 @@ class CallFunctionException {
     var test = TestExceptionClass();
     try {
       var result = test.input_100(100);
-      print('Result: $result');
+      logger.d('Result: $result');
     } on CustomAnException catch (error) {
       var customError = error.errorObject as CustomErrorException;
-      print('CustomAnException: ${customError.errorMessage}');
+      logger.d('CustomAnException: ${customError.errorMessage}');
     } catch (error) {
-      print('Error: $error');
+      logger.d('Error: $error');
     } finally {
-      print('CallFunctionException finally');
+      logger.d('CallFunctionException finally');
     }
   }
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,7 +84,7 @@ final Map<String, String> mockLoginInfo = {
 };
 
 Future<UserInfo> callLoginApi(String email, String password) async {
-  print('callLoginApi...');
+  logger.d('callLoginApi...');
   await Future.delayed(Duration(seconds: 2));
   if (!email.contains('@')) {
     throw InvalidEmailException('Invalid email');
@@ -103,15 +103,15 @@ Future<UserInfo> callLoginApi(String email, String password) async {
 Future<void> userDoLogin(String email, String password) async {
   try {
     var userInfo = await callLoginApi(email, password);
-    print('Login success! Hi ${userInfo.name} email: ${userInfo.email}');
+    logger.d('Login success! Hi ${userInfo.name} email: ${userInfo.email}');
   } on InvalidEmailException catch (error) {
-    print('InvalidEmailException: $error');
+    logger.d('InvalidEmailException: $error');
   } on InvalidPasswordException catch (error) {
-    print('InvalidPasswordException: $error');
+    logger.d('InvalidPasswordException: $error');
   } on UserNotFoundException catch (error) {
-    print('UserNotFoundException: $error');
+    logger.d('UserNotFoundException: $error');
   } finally {
-    print('userDoLogin finally');
+    logger.d('userDoLogin finally');
   }
 }
 
