@@ -1,15 +1,16 @@
 import 'package:logger/logger.dart';
-import 'package:learnflutter/class_and_properties_example.dart';
-import 'package:learnflutter/operator_example.dart';
-import 'package:learnflutter/exception_example.dart';
-import 'package:learnflutter/function_example.dart';
-import 'asynchrony_example.dart';
-import 'string_number_operator.dart';
-import 'json_handler_example.dart';
+import 'package:learnflutter/learn_dart_language/class_and_properties_example.dart';
+import 'package:learnflutter/learn_dart_language/operator_example.dart';
+import 'package:learnflutter/learn_dart_language/exception_example.dart';
+import 'package:learnflutter/learn_dart_language/function_example.dart';
+import 'learn_dart_language/asynchrony_example.dart';
+import 'learn_dart_language/string_number_operator.dart';
+import 'package:learnflutter/learn_dart_language/json_handler_example.dart';
 import 'dart:convert'; // for working with Json
 import 'package:learnflutter/test_generate_model_json_parsing_code/developer.dart';
+import 'package:learnflutter/learn_dart_language/enum_example.dart';
 
-var logger = Logger();
+var log = Logger();
 
 // MARK: MAIN
 void main() {
@@ -160,5 +161,8 @@ void main() {
   // logger.d(developer.age);
   // logger.d(developer.isDeveloper);
 
-  parseJsonToDemoParseJsonClass();
+  // parseJsonToDemoParseJsonClass();
+
+  var testEnum = TestEnum();
+  testEnum.testEnum();
 }
