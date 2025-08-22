@@ -1,3 +1,8 @@
+import 'dart:convert'; // for working with Json
+import 'package:logger/logger.dart';
+
+var logger = Logger();
+
 class User {
   final String? name;
   final int? age;
@@ -17,9 +22,8 @@ class User {
   }
 }
 
-/*
-  void main() {
-    // Parse JSON string
+void parseJsonToUser() {
+  // Parse JSON string
   String jsonString = '{"name": "Thế Anh", "age": 30, "isDeveloper": false}';
   Map<String, dynamic> userMap = jsonDecode(jsonString);
 
@@ -27,8 +31,7 @@ class User {
   logger.d(user.name);
   logger.d(user.age);
   logger.d(user.isDeveloper);
-  }
- */
+}
 
 class DemoParseJsonClass {
   List<CategoryModel?>? categories;
@@ -85,8 +88,46 @@ class ProductModel {
 }
 
 // Parse json string to model
-/*
- var jsonString = ''' { } '''
+void parseJsonToDemoParseJsonClass() {
+  var jsonString = '''{ "categories": [
+        {
+          "id": 1,
+          "name": "Electronics",
+          "products": [
+            {
+              "id": "E001",
+              "name": "Smartphone",
+              "price": 699.99,
+              "inStock": true,
+              "attributes": {
+                "brand": "TechBrand",
+                "color": "Black",
+                "storage": "128GB"
+              }
+            },
+            {
+              "id": "E002",
+              "name": "Laptop",
+              "price": 1299.99,
+              "inStock": false,
+              "attributes": {
+                "brand": "TechBrand",
+                "color": "Silver",
+                "storage": "512GB"
+              }
+            }
+          ]
+        }
+      ]}''';
+
   Map<String, dynamic> jsonMap = jsonDecode(jsonString);
   var store = DemoParseJsonClass.fromJson(jsonMap);
- */
+  logger.d(store.categories);
+  logger.d(store.categories![0]!.id);
+  logger.d(store.categories![0]!.name);
+  logger.d(store.categories![0]!.products);
+  logger.d(store.categories![0]!.products![0]!.id);
+  logger.d(store.categories![0]!.products![0]!.name);
+  logger.d(store.categories![0]!.products![0]!.price);
+  logger.d(store.categories![0]!.products![0]!.inStock);
+}

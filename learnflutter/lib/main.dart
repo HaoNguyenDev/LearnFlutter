@@ -7,6 +7,7 @@ import 'asynchrony_example.dart';
 import 'string_number_operator.dart';
 import 'json_handler_example.dart';
 import 'dart:convert'; // for working with Json
+import 'package:learnflutter/test_generate_model_json_parsing_code/developer.dart';
 
 var logger = Logger();
 
@@ -150,4 +151,14 @@ void main() {
   // logger.d(user.name);
   // logger.d(user.age);
   // logger.d(user.isDeveloper);
+
+  // String jsonString =
+  //     '''{"name": "Hao Nguyen", "age": 30, "isDeveloper": true}''';
+  // Map<String, dynamic> userMap = jsonDecode(jsonString);
+  // var developer = Developer.fromJson(userMap);
+  // logger.d(developer.name);
+  // logger.d(developer.age);
+  // logger.d(developer.isDeveloper);
+
+  parseJsonToDemoParseJsonClass();
 }
