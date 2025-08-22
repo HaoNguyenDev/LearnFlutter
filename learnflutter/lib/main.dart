@@ -5,6 +5,8 @@ import 'package:learnflutter/exception_example.dart';
 import 'package:learnflutter/function_example.dart';
 import 'asynchrony_example.dart';
 import 'string_number_operator.dart';
+import 'json_handler_example.dart';
+import 'dart:convert'; // for working with Json
 
 var logger = Logger();
 
@@ -134,6 +136,18 @@ void main() {
   var asyncExample = AsynchronyExample();
   asyncExample.fetchBtnTapped();
   */
+
+  /*
   var stringNumberOperator = StringNumberOperator();
   stringNumberOperator.numberParse();
+  */
+
+  // Parse JSON string
+  // String jsonString = '{"name": "Thế Anh", "age": 30, "isDeveloper": false}';
+  // Map<String, dynamic> userMap = jsonDecode(jsonString);
+
+  // var user = User.fromJson(userMap);
+  // logger.d(user.name);
+  // logger.d(user.age);
+  // logger.d(user.isDeveloper);
 }
