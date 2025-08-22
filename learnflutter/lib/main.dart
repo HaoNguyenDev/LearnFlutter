@@ -4,6 +4,7 @@ import 'package:learnflutter/operator_example.dart';
 import 'package:learnflutter/exception_example.dart';
 import 'package:learnflutter/function_example.dart';
 import 'asynchrony_example.dart';
+import 'string_number_operator.dart';
 
 var logger = Logger();
 
@@ -129,6 +130,10 @@ void main() {
   logger.d(exampleClass.getProperties);
   */
 
+  /*
   var asyncExample = AsynchronyExample();
   asyncExample.fetchBtnTapped();
+  */
+  var stringNumberOperator = StringNumberOperator();
+  stringNumberOperator.numberParse();
 }
