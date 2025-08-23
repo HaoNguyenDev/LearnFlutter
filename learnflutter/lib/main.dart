@@ -10,7 +10,7 @@ import 'dart:convert'; // for working with Json
 import 'package:learnflutter/test_generate_model_json_parsing_code/developer.dart';
 import 'package:learnflutter/learn_dart_language/enum_example.dart';
 import 'package:learnflutter/learn_dart_language/callback_example.dart';
-
+import 'package:learnflutter/learn_dart_language/restful_api_example.dart';
 var log = Logger();
 
 // MARK: MAIN
@@ -172,6 +172,7 @@ void main() async {
 
   //MARK: CallBack
 
+  /*
   var callBackExample = CallBackExample();
 
   callBackExample.simpleCallback('Task 1', (result) {
@@ -208,8 +209,10 @@ void main() async {
   } catch (error) {
     log.d('Error: ${error.toString()}');
   }
+*/
 
-
+//MARK: RESTful API
+  await fetchPostsDio();
 }
 
 
