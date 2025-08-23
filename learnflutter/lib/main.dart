@@ -9,11 +9,12 @@ import 'package:learnflutter/learn_dart_language/json_handler_example.dart';
 import 'dart:convert'; // for working with Json
 import 'package:learnflutter/test_generate_model_json_parsing_code/developer.dart';
 import 'package:learnflutter/learn_dart_language/enum_example.dart';
+import 'package:learnflutter/learn_dart_language/callback_example.dart';
 
 var log = Logger();
 
 // MARK: MAIN
-void main() {
+void main() async {
   /*
   // Variable
   var firstNumbers = [0, 1, 2, 3, 4, 5];
@@ -163,6 +164,52 @@ void main() {
 
   // parseJsonToDemoParseJsonClass();
 
+  //Enum
+  /* 
   var testEnum = TestEnum();
   testEnum.testEnum();
+  */
+
+  //MARK: CallBack
+
+  var callBackExample = CallBackExample();
+
+  callBackExample.simpleCallback('Task 1', (result) {
+    log.d('Result: ${result.nameOfTask}');
+  });
+
+  callBackExample.processNumber(2, 3, (a, b) => a + b);
+
+  int multiplyFormular(int a, int b) => a * b;
+  int sumFormular(int a, int b) => a + b;
+  var result = callBackExample.processNumber(2, 3, sumFormular);
+  log.d('Result: $result');
+
+  callBackExample.callUrl('https://google.com', (result, error) {
+    if (error != null) {
+      log.d('Error: ${error.toString()}');
+    } else {
+      log.d('Result: ${result.nameOfTask}');
+    }
+  });
+
+  var mockData = {
+    'image': 'hash image code 273465',
+  };
+  callBackExample.uploadData(mockData, (result) {
+    log.d('Result: ${result.nameOfTask}');
+  }, (error) {
+    log.d('Error: ${error.toString()}');
+  });
+
+  try {
+    var result = await callBackExample.fetchDataWithFuture(true);
+    log.d('Result: $result');
+  } catch (error) {
+    log.d('Error: ${error.toString()}');
+  }
+
+
 }
+
+

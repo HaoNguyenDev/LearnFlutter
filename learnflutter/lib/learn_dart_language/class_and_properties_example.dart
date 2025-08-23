@@ -8,8 +8,8 @@ var logger = Logger();
 class ExampleClass {
   late String title;
   late Object value;
-
-  ExampleClass.namedConstructor(this.title, this.value);
+  String? optionalInput; 
+  ExampleClass.namedConstructor(this.title, this.value, [this.optionalInput]); // define optional parameter in []
 
   // Redirecting constructor
   ExampleClass.fromTitle(String title) : this.namedConstructor(title, 0);

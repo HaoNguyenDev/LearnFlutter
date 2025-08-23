@@ -1,6 +1,6 @@
 import 'package:logger/web.dart';
 import 'dart:math';
-
+import 'package:learnflutter/main.dart';
 class ApiErrorException implements Exception {
   final String message;
   ApiErrorException(this.message);
@@ -44,4 +44,27 @@ class AsynchronyExample {
           logger.d('$error');
         });
   }
+
+  Future<int?> processNumber(int a, int b, int Function(int, int) callback) {
+    log.d('Process number $a and $b...');
+    // Return an Future and use .then() to process result
+    return Future.delayed(Duration(seconds: 2)).then((_) {
+      if (Random().nextInt(10) % 2 == 0) {
+        int result = callback(a, b);
+        return result;
+      } else {
+        return null;
+      }
+    });
+  }
+
+  // processNumber(5, 5, (a, b) => a + b)
+  //   .then((result) {
+  //     if (result != null) {
+  //       print('Result: $result'); // 10
+  //     } else {
+  //       print('Result are null');
+  //     }
+  //   });
+
 }
