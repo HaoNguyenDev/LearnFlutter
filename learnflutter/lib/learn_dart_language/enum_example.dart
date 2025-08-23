@@ -44,17 +44,45 @@ enum TrafficLight {
 }
 
 // MARK: Error Enums
-enum TestErrorEnum implements Exception {
-  lowerThanZero(errorMessage: "Lower than zero", errorCode: -1),
-  equalToZero(errorMessage: "Equal to zero", errorCode: 0),
-  greaterThanZero(errorMessage: "Greater than zero", errorCode: 1);
+enum TestErrorEnum {
+  lowerThanZero(errorCode: -1),
+  equalToZero(errorCode: 0),
+  greaterThanZero(errorCode: 1);
 
-  final String errorMessage;
   final int errorCode;
-  const TestErrorEnum({required this.errorMessage, required this.errorCode});
+  const TestErrorEnum({required this.errorCode});
 
-  Exception get asException =>
-      Exception('errorMessage: $errorMessage: errorCode: $errorCode');
+  String get message {
+    switch (this) {
+      case TestErrorEnum.lowerThanZero:
+        return 'Lower than zero';
+      case TestErrorEnum.equalToZero:
+        return 'Equal to zero';
+      case TestErrorEnum.greaterThanZero:
+        return 'Greater than zero';
+    }
+  }
+
+  // Exception get asException => Exception(message);
+}
+
+enum ErrorTypeDemo { 
+  invalidInput,
+  networkFailure,
+  unauthorizedAccess
+}
+
+// Implement Error Enum with Exceptions 
+class AppErrorDemo implements Exception {
+  final ErrorTypeDemo errorType;
+  final String? message;
+
+  AppErrorDemo(this.errorType, [this.message]);
+
+  @override
+  String toString() {
+    return 'AppErrorDemo: {errorType: $errorType, message: $message}';
+  }
 }
 
 // MARK: Test Void
@@ -103,20 +131,53 @@ class TestEnum {
     currentLight.displayInfo();
      */
 
+    // try {
+    //   inputAnNumber(-1);
+    // } on TestErrorEnum catch (error) {
+    //   log.d(error.errorCode);
+    //   log.d(error.message);
+    //   // log.d(enumError.asException);
+    // } catch (error) {
+    //   log.d(error);
+    // }
+
     try {
-      inputAnNumber(1);
+      performAction(ErrorTypeDemo.networkFailure);
     } catch (error) {
-      log.d('$error');
+      if (error is AppErrorDemo) {
+        switch (error.errorType) {  
+          case ErrorTypeDemo.invalidInput:
+            log.d(error.errorType);
+            break;
+          case ErrorTypeDemo.networkFailure:
+            log.d(error.errorType);
+            break;  
+          case ErrorTypeDemo.unauthorizedAccess:
+            log.d(error.errorType);
+            break;  
+        }
+      }
     }
   }
 
   void inputAnNumber(int number) {
     if (number < 0) {
-      throw Exception(TestErrorEnum.lowerThanZero);
+      throw TestErrorEnum.lowerThanZero;
     } else if (number == 0) {
-      throw TestErrorEnum.equalToZero.asException;
+      throw TestErrorEnum.equalToZero;
     } else {
-      throw TestErrorEnum.greaterThanZero.asException;
+      throw TestErrorEnum.greaterThanZero;
+    }
+  }
+
+  void performAction(ErrorTypeDemo errorType) {
+    switch (errorType) {
+      case ErrorTypeDemo.invalidInput:
+        throw AppErrorDemo(ErrorTypeDemo.invalidInput, 'Invalid input');
+      case ErrorTypeDemo.networkFailure:
+        throw AppErrorDemo(ErrorTypeDemo.networkFailure, 'Network failure');
+      case ErrorTypeDemo.unauthorizedAccess:
+        throw AppErrorDemo(ErrorTypeDemo.unauthorizedAccess,'Unauthorized access');
     }
   }
 }
