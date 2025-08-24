@@ -113,11 +113,30 @@ class Calculator {
 
   void forEachList() {
     List<String> numberLetters = ['Mot', 'Hai', 'Ba', 'Bon', 'Nam'];
-    for (var letter in numberLetters) {
-      debugPrint(letter);
+    for (var element in numberLetters) {
+      debugPrint(element);
     }
-
     debugPrint('\n');
+
+    Map<String, int> ages = {'An': 20, 'Bình': 25, 'Cường': 30};
+    ages.forEach((name, age) {
+      debugPrint('$name: $age years old');
+    });
+  }
+
+  void sumAll() {
+    List<int> numbers = [1, 2, 3, 4, 5];
+    int sum = 0;
+    for (var number in numbers) {
+      sum += number;
+    }
+    debugPrint('Total: $sum'); // Total: 15
+  }
+
+  void mapToList() {
+    List<int> numbers = [1, 2, 3];
+    var doubled = numbers.map((n) => n * 2).toList(); // [2, 4, 6]
+    debugPrint('$doubled');
   }
 
   /// Use Object type when you want to write a function that can accept any data type as an argument:
