@@ -1,6 +1,6 @@
-import 'package:logger/web.dart';
 import 'dart:math';
-import 'package:learnflutter/main.dart';
+import 'package:learnflutter/learn_dart_language/app_logger.dart';
+
 class ApiErrorException implements Exception {
   final String message;
   ApiErrorException(this.message);
@@ -11,11 +11,10 @@ class ApiErrorException implements Exception {
 }
 
 class AsynchronyExample {
-  var logger = Logger();
   var random = Random();
 
   Future<Map<String, Object>?> fetchUserData() async {
-    logger.d('callApi...');
+    Logger.log('callApi...');
     await Future.delayed(Duration(seconds: 2));
     var randomNumber = random.nextInt(10);
     if (randomNumber % 2 == 0) {
@@ -27,26 +26,26 @@ class AsynchronyExample {
   }
 
   void fetchBtnTapped() async {
-    // logger.d("fetch button tapped...");
+    // Logger.log("fetch button tapped...");
     // try {
     //   var data = await fetchUserData();
-    //   logger.d(data);
+    //   Logger.log(data);
     // } catch (error) {
-    //   logger.d(error);
+    //   Logger.log(error);
     // }
-    // logger.d("finish fetchUserData...");
+    // Logger.log("finish fetchUserData...");
 
     fetchUserData()
         .then((data) {
-          logger.d(data);
+          Logger.log(data);
         })
         .catchError((error) {
-          logger.d('$error');
+          Logger.log('$error');
         });
   }
 
   Future<int?> processNumber(int a, int b, int Function(int, int) callback) {
-    log.d('Process number $a and $b...');
+    Logger.log('Process number $a and $b...');
     // Return an Future and use .then() to process result
     return Future.delayed(Duration(seconds: 2)).then((_) {
       if (Random().nextInt(10) % 2 == 0) {

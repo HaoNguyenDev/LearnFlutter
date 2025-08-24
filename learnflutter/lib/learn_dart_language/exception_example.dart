@@ -1,7 +1,5 @@
 // MARK: EXCEPTION
-import 'package:logger/logger.dart';
-
-var logger = Logger();
+import 'package:learnflutter/learn_dart_language/app_logger.dart';
 
 class CustomErrorException {
   String? errorMessage;
@@ -36,14 +34,14 @@ class CallFunctionException {
     var test = TestExceptionClass();
     try {
       var result = test.input_100(100);
-      logger.d('Result: $result');
+      Logger.log('Result: $result');
     } on CustomAnException catch (error) {
       var customError = error.errorObject as CustomErrorException;
-      logger.d('CustomAnException: ${customError.errorMessage}');
+      Logger.log('CustomAnException: ${customError.errorMessage}');
     } catch (error) {
-      logger.d('Error: $error');
+      Logger.log('Error: $error');
     } finally {
-      logger.d('CallFunctionException finally');
+      Logger.log('CallFunctionException finally');
     }
   }
 }
@@ -84,7 +82,7 @@ final Map<String, String> mockLoginInfo = {
 };
 
 Future<UserInfo> callLoginApi(String email, String password) async {
-  logger.d('callLoginApi...');
+  Logger.log('callLoginApi...');
   await Future.delayed(Duration(seconds: 2));
   if (!email.contains('@')) {
     throw InvalidEmailException('Invalid email');
@@ -103,15 +101,15 @@ Future<UserInfo> callLoginApi(String email, String password) async {
 Future<void> userDoLogin(String email, String password) async {
   try {
     var userInfo = await callLoginApi(email, password);
-    logger.d('Login success! Hi ${userInfo.name} email: ${userInfo.email}');
+    Logger.log('Login success! Hi ${userInfo.name} email: ${userInfo.email}');
   } on InvalidEmailException catch (error) {
-    logger.d('InvalidEmailException: $error');
+    Logger.log('InvalidEmailException: $error');
   } on InvalidPasswordException catch (error) {
-    logger.d('InvalidPasswordException: $error');
+    Logger.log('InvalidPasswordException: $error');
   } on UserNotFoundException catch (error) {
-    logger.d('UserNotFoundException: $error');
+    Logger.log('UserNotFoundException: $error');
   } finally {
-    logger.d('userDoLogin finally');
+    Logger.log('userDoLogin finally');
   }
 }
 

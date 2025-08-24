@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:learnflutter/main.dart';
+import 'package:learnflutter/learn_dart_language/app_logger.dart';
 
 final dio = Dio();
 
@@ -49,12 +49,12 @@ Future<PostList?> fetchPostsDio() async {
     if (response.statusCode == 200) {
       return PostList.fromJson(response.data);
     } else {
-      throw Exception('Lỗi từ server: ${response.statusCode}');
+      throw Exception('Server error: ${response.statusCode}');
     }
   } on DioException catch (e) {
-    throw Exception('Lỗi kết nối: ${e.message}');
+    throw Exception('Connect error: ${e.message}');
   } catch (e) {
-    throw Exception('Lỗi không xác định: $e');
+    throw Exception('$e');
   }
 }
 /*
