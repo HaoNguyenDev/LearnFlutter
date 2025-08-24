@@ -11,6 +11,7 @@ import 'package:learnflutter/learn_dart_language/enum_example.dart';
 import 'package:learnflutter/learn_dart_language/callback_example.dart';
 import 'package:learnflutter/learn_dart_language/restful_api_example.dart';
 import 'package:flutter/material.dart';
+import 'package:learnflutter/learn_dart_language/mixin_example.dart';
 
 // MARK: MAIN
 void main() async {
@@ -210,6 +211,7 @@ void main() async {
   }
 */
 
+  /*
   //MARK: RESTful API
   try {
     var postList = await fetchPostsDio();
@@ -223,4 +225,26 @@ void main() async {
   } catch (error) {
     debugPrint('Error: ${error.toString()}');
   }
+  */
+
+  var bird = Bird('Red bird');
+  debugPrint(bird.birdName);
+  bird.fly();
+
+  var fish = Fish('Blue Fish');
+  debugPrint(fish.fishName);
+  fish.swim();
+
+  var duck = Duck('Sky Duck');
+  debugPrint(duck.duckName);
+  duck.fly();
+  duck.swim();
+
+  debugPrint('\n');
+
+  var dog = Dog('Corgi dog');
+  debugPrint(dog.dogName);
+  dog.eating();
+  dog.bark();
+  dog.run();
 }
