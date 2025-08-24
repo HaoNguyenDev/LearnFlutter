@@ -1,5 +1,4 @@
-import 'package:learnflutter/learn_dart_language/app_logger.dart';
-
+import 'package:flutter/material.dart';
 //===========================
 // MARK: ExampleClass
 //===========================
@@ -43,7 +42,7 @@ class ExampleClass {
 
 void testExampleClass() {
   var exampleClass = ExampleClass(title: 'Hao Nguyen', value: 30);
-  Logger.log(
+  debugPrint(
     'Title: ${exampleClass.title}, Value: ${exampleClass.value}, value type: ${exampleClass.value.runtimeType}',
   );
 }
@@ -73,7 +72,7 @@ class Logger {
 
   Logger._internal(this.name); // Private named constructor for internal use
 }
-  Logger.log('Debug message'); // For debugging purposes
+  debugPrint('Debug message'); // For debugging purposes
   logger.i('Info message'); // General information
   logger.w('Warning message'); // Potential issues
   logger.e('Error message'); // Errors that occurred
@@ -169,7 +168,7 @@ class Car extends Verhical {
 
   @override
   void messageOfBrand() {
-    Logger.log(
+    debugPrint(
       'VinFast\'s core message revolves around creating a sustainable future through smart, safe, and environmentally friendly electric vehicles',
     );
   }
@@ -203,12 +202,12 @@ class Bicycle extends Verhical {
 
   @override
   void messageOfBrand() {
-    Logger.log(
+    debugPrint(
       'We are $brandName Bicycle, we just has $numberOfWheel wheels!, max speed is $maxSpeed km/h! Made in $_madeIn',
     );
   }
 }
-
+/*
 class TypeClass {
   void testType() {
     /// Integers are numbers without a decimal point. Here are some examples of defining integer literals:
@@ -263,4 +262,6 @@ class TypeClass {
     var s3 = 'It\'s easy to escape the string delimiter.';
     var s4 = "It's even easier to use the other delimiter.";
   }
+  
 }
+*/

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:learnflutter/learn_dart_language/app_logger.dart';
+import 'package:flutter/material.dart';
 
 final dio = Dio();
 
@@ -54,6 +54,7 @@ Future<PostList?> fetchPostsDio() async {
   } on DioException catch (e) {
     throw Exception('Connect error: ${e.message}');
   } catch (e) {
+    debugPrint('Error: $e');
     throw Exception('$e');
   }
 }

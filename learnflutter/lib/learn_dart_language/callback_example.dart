@@ -1,6 +1,5 @@
 import 'dart:math';
-import 'package:flutter/rendering.dart';
-import 'package:learnflutter/learn_dart_language/app_logger.dart';
+import 'package:flutter/material.dart';
 
 class ResultTestObject {
   String? nameOfTask;
@@ -15,7 +14,7 @@ typedef ErrorCallback = void Function(String error);
 class CallBackExample {
   // MARK: Simple
   void simpleCallback(String task, void Function(ResultTestObject) callback) {
-    Logger.log('Performing $task...');
+    debugPrint('Performing $task...');
     Future.delayed(Duration(seconds: 2), () {
       callback(ResultTestObject(task));
     });
@@ -26,7 +25,7 @@ class CallBackExample {
     String task, [
     void Function(ResultTestObject)? callback,
   ]) {
-    Logger.log('Performing $task...');
+    debugPrint('Performing $task...');
     Future.delayed(Duration(seconds: 2), () {
       if (callback != null) {
         // check if callback is not null
@@ -37,12 +36,12 @@ class CallBackExample {
 
   // MARK: Multiple parameter
   int? processNumber(int a, int b, int Function(int, int) callback) {
-    Logger.log('Process number $a and $b...');
+    debugPrint('Process number $a and $b...');
     return callback(a, b);
   }
 
   void callUrl( String url, void Function(ResultTestObject, Exception?) result) {
-    Logger.log('Calling $url...');
+    debugPrint('Calling $url...');
     Future.delayed(Duration(seconds: 2), () {
       if (Random().nextInt(10) % 2 == 0) {
         result(ResultTestObject("$url success!"), null);
@@ -53,7 +52,7 @@ class CallBackExample {
   }
 
   void uploadData(Map<String, dynamic> data, void Function(ResultTestObject) onSuccess, void Function(Exception) onFailed) {
-    Logger.log('Uploading data...');
+    debugPrint('Uploading data...');
     Future.delayed(Duration(seconds: 2), () {
       if (Random().nextInt(10) % 2 == 0) {
         onSuccess(ResultTestObject('Upload data success!'));
@@ -64,7 +63,7 @@ class CallBackExample {
   }
 
   void fetchData(DataCallback data, ErrorCallback error) {
-    Logger.log('Fetching data...');
+    debugPrint('Fetching data...');
     Future.delayed(Duration(seconds: 2), () {
       if (Random().nextInt(10) % 2 == 0) {
         data('Fetch data success!');
@@ -75,7 +74,7 @@ class CallBackExample {
   }
 
   Future<String?> fetchDataWithFuture(bool shouldSuccess) async {
-    Logger.log('Fetching data...');
+    debugPrint('Fetching data...');
     await Future.delayed(Duration(seconds: 2));
     if (shouldSuccess) {
       return 'Fetch data success!';
@@ -98,7 +97,7 @@ class CallBackExample {
   var callBackExample = CallBackExample();
 
   // callBackExample.simpleCallback('Task 1', (result) {
-  //   Logger.log('Result: ${result.nameOfTask}');
+  //   debugPrint('Result: ${result.nameOfTask}');
   // });
 
   // Callback are function parameter
@@ -107,13 +106,13 @@ class CallBackExample {
   // int multiplyFormular(int a, int b) => a * b;  // define an function param
   // int sumFormular(int a, int b) => a + b;
   // var result = callBackExample.processNumber(2, 3, sumFormular);
-  // Logger.log('Result: $result');
+  // debugPrint('Result: $result');
 
   // callBackExample.callUrl('https://google.com', (result, error) {
   //   if (error != null) {
-  //     Logger.log('Error: ${error.toString()}');
+  //     debugPrint('Error: ${error.toString()}');
   //   } else {
-  //     Logger.log('Result: ${result.nameOfTask}');
+  //     debugPrint('Result: ${result.nameOfTask}');
   //   }
   // });
 
@@ -121,16 +120,16 @@ class CallBackExample {
   //   'image': 'hash image code 273465',
   // };
   // callBackExample.uploadData(mockData, (result) {
-  //   Logger.log('Result: ${result.nameOfTask}');
+  //   debugPrint('Result: ${result.nameOfTask}');
   // }, (error) {
-  //   Logger.log('Error: ${error.toString()}');
+  //   debugPrint('Error: ${error.toString()}');
   // });
 
   // try {
   //   var result = await callBackExample.fetchDataWithFuture(true);
-  //   Logger.log('Result: $result');
+  //   debugPrint('Result: $result');
   // } catch (error) {
-  //   Logger.log('Error: ${error.toString()}');
+  //   debugPrint('Error: ${error.toString()}');
   // }
   }
  */

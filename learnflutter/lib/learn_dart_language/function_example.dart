@@ -1,4 +1,4 @@
-import 'package:learnflutter/learn_dart_language/app_logger.dart';
+import 'package:flutter/material.dart';
 
 //===========================
 // MARK: GENERIC TYPE
@@ -37,5 +37,5 @@ class Queue<T> {
 }
 
 void showTypeOf<T>(T value) {
-  Logger.log('Type of $value is ${value.runtimeType}');
+  debugPrint('Type of $value is ${value.runtimeType}');
 }

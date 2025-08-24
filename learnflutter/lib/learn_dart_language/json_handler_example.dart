@@ -1,5 +1,5 @@
 import 'dart:convert'; // for working with Json
-import 'package:learnflutter/learn_dart_language/app_logger.dart';
+import 'package:flutter/material.dart';
 
 class User {
   final String? name;
@@ -26,9 +26,9 @@ void parseJsonToUser() {
   Map<String, dynamic> userMap = jsonDecode(jsonString);
 
   var user = User.fromJson(userMap);
-  Logger.log(user.name);
-  Logger.log(user.age);
-  Logger.log(user.isDeveloper);
+  debugPrint(user.name);
+  debugPrint('${user.age}');
+  debugPrint('${user.isDeveloper}}');
 }
 
 class DemoParseJsonClass {
@@ -120,12 +120,12 @@ void parseJsonToDemoParseJsonClass() {
 
   Map<String, dynamic> jsonMap = jsonDecode(jsonString);
   var store = DemoParseJsonClass.fromJson(jsonMap);
-  Logger.log(store.categories);
-  Logger.log(store.categories![0]!.id);
-  Logger.log(store.categories![0]!.name);
-  Logger.log(store.categories![0]!.products);
-  Logger.log(store.categories![0]!.products![0]!.id);
-  Logger.log(store.categories![0]!.products![0]!.name);
-  Logger.log(store.categories![0]!.products![0]!.price);
-  Logger.log(store.categories![0]!.products![0]!.inStock);
+  debugPrint('${store.categories}');
+  debugPrint('${store.categories![0]!.id}');
+  debugPrint('${store.categories![0]!.name}');
+  debugPrint('${store.categories![0]!.products}');
+  debugPrint('${store.categories![0]!.products![0]!.id}');
+  debugPrint('${store.categories![0]!.products![0]!.name}');
+  debugPrint('${store.categories![0]!.products![0]!.price}');
+  debugPrint('${store.categories![0]!.products![0]!.inStock}');
 }

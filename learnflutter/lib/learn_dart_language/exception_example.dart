@@ -1,5 +1,5 @@
 // MARK: EXCEPTION
-import 'package:learnflutter/learn_dart_language/app_logger.dart';
+import 'package:flutter/material.dart';
 
 class CustomErrorException {
   String? errorMessage;
@@ -34,14 +34,14 @@ class CallFunctionException {
     var test = TestExceptionClass();
     try {
       var result = test.input_100(100);
-      Logger.log('Result: $result');
+      debugPrint('Result: $result');
     } on CustomAnException catch (error) {
       var customError = error.errorObject as CustomErrorException;
-      Logger.log('CustomAnException: ${customError.errorMessage}');
+      debugPrint('CustomAnException: ${customError.errorMessage}');
     } catch (error) {
-      Logger.log('Error: $error');
+      debugPrint('Error: $error');
     } finally {
-      Logger.log('CallFunctionException finally');
+      debugPrint('CallFunctionException finally');
     }
   }
 }
@@ -82,7 +82,7 @@ final Map<String, String> mockLoginInfo = {
 };
 
 Future<UserInfo> callLoginApi(String email, String password) async {
-  Logger.log('callLoginApi...');
+  debugPrint('callLoginApi...');
   await Future.delayed(Duration(seconds: 2));
   if (!email.contains('@')) {
     throw InvalidEmailException('Invalid email');
@@ -101,15 +101,15 @@ Future<UserInfo> callLoginApi(String email, String password) async {
 Future<void> userDoLogin(String email, String password) async {
   try {
     var userInfo = await callLoginApi(email, password);
-    Logger.log('Login success! Hi ${userInfo.name} email: ${userInfo.email}');
+    debugPrint('Login success! Hi ${userInfo.name} email: ${userInfo.email}');
   } on InvalidEmailException catch (error) {
-    Logger.log('InvalidEmailException: $error');
+    debugPrint('InvalidEmailException: $error');
   } on InvalidPasswordException catch (error) {
-    Logger.log('InvalidPasswordException: $error');
+    debugPrint('InvalidPasswordException: $error');
   } on UserNotFoundException catch (error) {
-    Logger.log('UserNotFoundException: $error');
+    debugPrint('UserNotFoundException: $error');
   } finally {
-    Logger.log('userDoLogin finally');
+    debugPrint('userDoLogin finally');
   }
 }
 
