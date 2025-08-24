@@ -213,10 +213,10 @@ void main() async {
   //MARK: RESTful API
   try {
     var postList = await fetchPostsDio();
-    if (postList?.posts != null) {
-      var posts = postList?.posts;
+    if (postList?.users != null) {
+      var posts = postList?.users;
       // debugPrint('Posts: ${posts![0]}');
-      debugPrint('Posts: ${posts![0]}');
+      debugPrint('Posts: ${posts!}');
     } else {
       debugPrint('Posts is null');
     }
