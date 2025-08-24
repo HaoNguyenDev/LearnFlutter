@@ -74,6 +74,28 @@ class Calculator {
   List<int> combineList() => [...firstNumbers, ...secondNumbers];
 
   //====================
+  // MARK: SET OPERATOR
+  //====================
+
+  void processSet() {
+    //MARK: SET
+    Set<int> aSet = {1, 2, 3, 4, 5};
+    Set<int> bSet = {4, 5, 6, 7, 8};
+
+    var unionSet = aSet.union(bSet);
+    var newASet = aSet.map((n) => n * 2).toList(); // [2, 4, 6)
+    var newBSet = bSet.map((n) => n % 2 != 0).toSet(); // {1, 3, 5}
+    debugPrint('$newASet');
+    debugPrint('$newBSet');
+
+    var newList = unionSet.toList();
+    debugPrint('$newList');
+
+    var evenNumber = newList.where((n) => n % 2 == 0).toList();
+    debugPrint('$evenNumber');
+  }
+
+  //====================
   // MARK: FOR LOOP
   //====================
   List<int>? filterWith(bool filterEvenNumber, List<int> yourNumbers) {
