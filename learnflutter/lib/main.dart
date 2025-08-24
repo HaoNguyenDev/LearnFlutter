@@ -10,7 +10,7 @@ import 'package:learnflutter/test_generate_model_json_parsing_code/developer.dar
 import 'package:learnflutter/learn_dart_language/enum_example.dart';
 import 'package:learnflutter/learn_dart_language/callback_example.dart';
 import 'package:learnflutter/learn_dart_language/restful_api_example.dart';
-import 'package:learnflutter/learn_dart_language/app_logger.dart';
+import 'package:flutter/material.dart';
 
 // MARK: MAIN
 void main() async {
@@ -215,11 +215,12 @@ void main() async {
     var postList = await fetchPostsDio();
     if (postList?.posts != null) {
       var posts = postList?.posts;
-      Logger.log('Posts: ${posts![0]}');
+      // debugPrint('Posts: ${posts![0]}');
+      debugPrint('Posts: ${posts![0]}');
     } else {
-      Logger.log('Posts is null');
+      debugPrint('Posts is null');
     }
   } catch (error) {
-    Logger.error('Error: ${error.toString()}');
+    debugPrint('Error: ${error.toString()}');
   }
 }

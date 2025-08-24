@@ -1,4 +1,4 @@
-import 'package:learnflutter/learn_dart_language/app_logger.dart';
+import 'package:flutter/material.dart';
 
 // MARK: Simple Enums
 enum DayOfWeek {
@@ -37,7 +37,7 @@ enum TrafficLight {
 
   // declare a method
   void displayInfo() {
-    Logger.log(
+    debugPrint(
       '$name light have time to wait $duration seconds and it ${stillWorking ? 'still working' : 'not working'}.',
     );
   }
@@ -93,39 +93,39 @@ class TestEnum {
     /* 
     switch (day) {
       case DayOfWeek.monday:
-        Logger.log('Today is Monday.');
+        debugPrint('Today is Monday.');
         break;
       case DayOfWeek.tuesday:
-        Logger.log('Today is Tuesday.');
+        debugPrint('Today is Tuesday.');
         break;
       case DayOfWeek.wednesday:
-        Logger.log('Today is Wednesday.');
+        debugPrint('Today is Wednesday.');
         break;
       case DayOfWeek.thursday:
-        Logger.log('Today is Thursday.');
+        debugPrint('Today is Thursday.');
         break;
       case DayOfWeek.friday:
-        Logger.log('Today is Friday.');
+        debugPrint('Today is Friday.');
         break;
       case DayOfWeek.saturday:
-        Logger.log('Today is Saturday.');
+        debugPrint('Today is Saturday.');
         break;
       case DayOfWeek.sunday:
-        Logger.log('Today is Sunday.');
+        debugPrint('Today is Sunday.');
         break;
     }
 
-    Logger.log('Index of current enum value: ${day.index}');
-    Logger.log('Is today Monday? ${day == DayOfWeek.monday}');
-    Logger.log('All days of week: ${DayOfWeek.values}');
+    debugPrint('Index of current enum value: ${day.index}');
+    debugPrint('Is today Monday? ${day == DayOfWeek.monday}');
+    debugPrint('All days of week: ${DayOfWeek.values}');
     for (var day in DayOfWeek.values) {
-      Logger.log(day);
+      debugPrint(day);
     }
     */
 
     /*
     TrafficLight currentLight = TrafficLight.green;
-    Logger.log(
+    debugPrint(
       'Time of ${currentLight.getTitle()} light: ${currentLight.duration} and it ${currentLight.stillWorking ? 'still working' : 'not working'}}',
     );
     currentLight.displayInfo();
@@ -134,11 +134,11 @@ class TestEnum {
     // try {
     //   inputAnNumber(-1);
     // } on TestErrorEnum catch (error) {
-    //   Logger.log(error.errorCode);
-    //   Logger.log(error.message);
-    //   // Logger.log(enumError.asException);
+    //   debugPrint(error.errorCode);
+    //   debugPrint(error.message);
+    //   // debugPrint(enumError.asException);
     // } catch (error) {
-    //   Logger.log(error);
+    //   debugPrint(error);
     // }
 
     try {
@@ -147,13 +147,13 @@ class TestEnum {
       if (error is AppErrorDemo) {
         switch (error.errorType) {  
           case ErrorTypeDemo.invalidInput:
-            Logger.log(error.errorType);
+            debugPrint('${error.errorType}');
             break;
           case ErrorTypeDemo.networkFailure:
-            Logger.log(error.errorType);
+            debugPrint('${error.errorType}');
             break;  
           case ErrorTypeDemo.unauthorizedAccess:
-            Logger.log(error.errorType);
+            debugPrint('${error.errorType}');
             break;  
         }
       }
