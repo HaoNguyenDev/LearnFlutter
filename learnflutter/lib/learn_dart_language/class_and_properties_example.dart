@@ -1,6 +1,4 @@
-import 'package:logger/logger.dart';
-
-var logger = Logger();
+import 'package:learnflutter/learn_dart_language/app_logger.dart';
 
 //===========================
 // MARK: ExampleClass
@@ -45,7 +43,7 @@ class ExampleClass {
 
 void testExampleClass() {
   var exampleClass = ExampleClass(title: 'Hao Nguyen', value: 30);
-  logger.d(
+  Logger.log(
     'Title: ${exampleClass.title}, Value: ${exampleClass.value}, value type: ${exampleClass.value.runtimeType}',
   );
 }
@@ -75,7 +73,7 @@ class Logger {
 
   Logger._internal(this.name); // Private named constructor for internal use
 }
-  logger.d('Debug message'); // For debugging purposes
+  Logger.log('Debug message'); // For debugging purposes
   logger.i('Info message'); // General information
   logger.w('Warning message'); // Potential issues
   logger.e('Error message'); // Errors that occurred
@@ -171,7 +169,7 @@ class Car extends Verhical {
 
   @override
   void messageOfBrand() {
-    logger.d(
+    Logger.log(
       'VinFast\'s core message revolves around creating a sustainable future through smart, safe, and environmentally friendly electric vehicles',
     );
   }
@@ -205,7 +203,7 @@ class Bicycle extends Verhical {
 
   @override
   void messageOfBrand() {
-    logger.d(
+    Logger.log(
       'We are $brandName Bicycle, we just has $numberOfWheel wheels!, max speed is $maxSpeed km/h! Made in $_madeIn',
     );
   }

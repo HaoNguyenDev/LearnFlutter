@@ -1,4 +1,3 @@
-import 'package:logger/logger.dart';
 import 'package:learnflutter/learn_dart_language/class_and_properties_example.dart';
 import 'package:learnflutter/learn_dart_language/operator_example.dart';
 import 'package:learnflutter/learn_dart_language/exception_example.dart';
@@ -11,8 +10,7 @@ import 'package:learnflutter/test_generate_model_json_parsing_code/developer.dar
 import 'package:learnflutter/learn_dart_language/enum_example.dart';
 import 'package:learnflutter/learn_dart_language/callback_example.dart';
 import 'package:learnflutter/learn_dart_language/restful_api_example.dart';
-
-var log = Logger();
+import 'package:learnflutter/learn_dart_language/app_logger.dart';
 
 // MARK: MAIN
 void main() async {
@@ -217,11 +215,11 @@ void main() async {
     var postList = await fetchPostsDio();
     if (postList?.posts != null) {
       var posts = postList?.posts;
-      log.d('Posts: ${posts![0]}');
+      Logger.log('Posts: ${posts![0]}');
     } else {
-      log.d('Posts is null');
+      Logger.log('Posts is null');
     }
   } catch (error) {
-    log.d('Error: ${error.toString()}');
+    Logger.error('Error: ${error.toString()}');
   }
 }

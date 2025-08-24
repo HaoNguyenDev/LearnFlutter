@@ -1,11 +1,11 @@
-import 'package:logger/logger.dart';
+import 'package:learnflutter/learn_dart_language/app_logger.dart';
+
 
 class StringNumberOperator {
-  var logger = Logger();
   //MARK: Numbers
   /* You can convert a string into an integer or double with the parse() methods of int and double, respectively: */
   void numberParse() {
-    logger.d('numberParse running...');
+    Logger.log('numberParse running...');
     assert(int.parse('42') == 42);
     assert(int.parse('0x42') == 66);
     assert(double.parse('0.50') == 0.5);
@@ -65,7 +65,7 @@ class StringNumberOperator {
     // a list of all characters (as Strings); good for
     // iterating.
     for (final char in 'hello'.split('')) {
-      logger.d(char);
+      Logger.log(char);
     }
 
     // Get all the UTF-16 code units in the string.
