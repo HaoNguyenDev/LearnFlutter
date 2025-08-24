@@ -265,3 +265,52 @@ class TypeClass {
   
 }
 */
+
+
+
+//===========================
+// MARK: Abstract Class
+//===========================
+
+/*
+abstract class Animal {
+  // Properties
+  String _name;
+  int _age;
+
+  // Constructor
+  Animal(this._name, this._age);
+
+  // Getter
+  String get name => _name;
+
+  // Setter
+  set age(int newAge) {
+    if (newAge >= 0) {
+      _age = newAge;
+    } else {
+      throw ArgumentError('Age cannot be negative');
+    }
+  }
+
+  int get age => _age;
+
+  // Abstract method without body
+  void makeSound();
+
+  // Method with body
+  void eat() {
+    print('$_name is eating');
+  }
+}
+
+// child class implement abstract class
+class Dog extends Animal {
+  Dog(String name, int age) : super(name, age);
+
+  @override
+  void makeSound() {
+    print('$name barks: Woof!');
+  }
+}
+*/
