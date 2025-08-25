@@ -24,98 +24,43 @@ class FourSquareOnUI extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Text(
-                    '1',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    '2',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              )
+              redBoxContainer('Box 1', Alignment.bottomRight),
+              redBoxContainer('Box 2', Alignment.bottomLeft),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                  color: Colors.red,
-                  width: 100,
-                  height: 100,
-                  child: Center(
-                    child: Text(
-                      '3',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ), textAlign: TextAlign.center,
-                    ),
-                  )
-                )
+              redBoxContainer('Box 3', Alignment.center),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Text(
-                    '4',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    '5',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              )
+              redBoxContainer('Box 4', Alignment.topRight),
+              redBoxContainer('Box 5', Alignment.topLeft),
             ],
-          )
+          ),
         ],
+      ),
+    );
+  }
+
+  Container redBoxContainer(String title, AlignmentGeometry alignment) {
+    return Container(
+      color: Colors.red,
+      width: 100,
+      height: 100,
+      child: Align(
+        alignment: alignment,
+        child: Text(
+          title,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
