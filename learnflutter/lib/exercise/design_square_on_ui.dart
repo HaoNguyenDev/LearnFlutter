@@ -24,21 +24,19 @@ class FourSquareOnUI extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              redBoxContainer('Box 1', Alignment.bottomRight),
-              redBoxContainer('Box 2', Alignment.bottomLeft),
+              textBoxContainer('Box 1', Alignment.bottomRight),
+              textBoxContainer('Box 2', Alignment.bottomLeft),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              redBoxContainer('Box 3', Alignment.center),
-            ],
+            children: [textBoxContainer('Box 3', Alignment.center, true)],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              redBoxContainer('Box 4', Alignment.topRight),
-              redBoxContainer('Box 5', Alignment.topLeft),
+              textBoxContainer('Box 4', Alignment.topRight),
+              textBoxContainer('Box 5', Alignment.topLeft),
             ],
           ),
         ],
@@ -46,20 +44,29 @@ class FourSquareOnUI extends StatelessWidget {
     );
   }
 
-  Container redBoxContainer(String title, AlignmentGeometry alignment) {
+  Container textBoxContainer(
+    String title,
+    AlignmentGeometry alignment, [
+    bool radius = false,
+  ]) {
     return Container(
-      color: Colors.red,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(radius ? 20 : 0),
+          bottomRight: Radius.circular(radius ? 20 : 0),
+        ), //BorderRadius.circular(radius ? 20 : 0),
+        color: Colors.red,
+      ),
+
+      alignment: alignment,
       width: 100,
       height: 100,
-      child: Align(
-        alignment: alignment,
-        child: Text(
-          title,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+      child: Text(
+        title,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
