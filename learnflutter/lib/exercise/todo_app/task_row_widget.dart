@@ -50,7 +50,11 @@ class TaskRowWidget extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () async {
-                  if (await confirm(context)) {
+                  if (await confirm(
+                    title: Text('Delete This Task?'),
+                    content: Text('Are you sure you want to delete this task?'),
+                    context,
+                  )) {
                     deleteTaskCallback(task);
                   }
                 },
