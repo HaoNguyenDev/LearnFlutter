@@ -4,7 +4,7 @@ import 'package:learnflutter/exercise/todo_app/task_row_widget.dart';
 import 'package:learnflutter/exercise/todo_app/add_task_widget.dart';
 
 class TasklistApp extends StatefulWidget {
-  List<TaskItem> tasks = [];
+  final List<TaskItem> tasks = [];
   TasklistApp({super.key});
 
   @override
@@ -15,6 +15,7 @@ class _TasklistAppState extends State<TasklistApp> {
   List<TaskItem> taskList = [];
 
   TextEditingController textController = TextEditingController();
+    
 
   void _addTask(TaskItem task) {
     setState(() {
