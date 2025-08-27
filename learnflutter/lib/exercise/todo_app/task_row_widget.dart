@@ -37,7 +37,9 @@ class TaskRowWidget extends StatelessWidget {
                 textAlign: TextAlign.start,
               ),
               Text(
-                DateFormat('EEEE, d MMMM yyyy, HH:mm:ss').format(task.id),
+                DateFormat(
+                  'EEEE, d MMMM yyyy, HH:mm:ss',
+                ).format(task.dateCreated),
                 style: TextStyle(fontSize: 10),
                 textAlign: TextAlign.start,
               ),
@@ -47,8 +49,10 @@ class TaskRowWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: () {
-                  deleteTaskCallback(task);
+                onTap: () async {
+                  if (await confirm(context)) {
+                    deleteTaskCallback(task);
+                  }
                 },
                 child: Icon(Icons.delete_outline_outlined),
               ),

@@ -1,8 +1,9 @@
 import 'package:uuid/uuid.dart';
 
 class TaskItem {
-  DateTime id = DateTime.now();
+  final String id;
   String taskName;
   bool isCompleted;
-  TaskItem(this.taskName, this.isCompleted);
+  final DateTime dateCreated;
+  TaskItem(this.taskName, this.isCompleted) : id = const Uuid().v4(), dateCreated = DateTime.now();
 }
