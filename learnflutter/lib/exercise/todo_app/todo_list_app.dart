@@ -4,74 +4,58 @@ import 'package:learnflutter/exercise/todo_app/task_row_widget.dart';
 import 'package:learnflutter/exercise/todo_app/add_task_widget.dart';
 
 class TasklistApp extends StatefulWidget {
-  const TasklistApp({super.key});
+  List<TaskItem> tasks = [];
+  TasklistApp({super.key});
 
   @override
   State<TasklistApp> createState() => _TasklistAppState();
 }
 
 class _TasklistAppState extends State<TasklistApp> {
-  final List<TaskItem> taskList = [];
+  List<TaskItem> taskList = [];
 
-  //MARK: Add Task
+  TextEditingController textController = TextEditingController();
+
   void _addTask(TaskItem task) {
-    debugPrint('Add task: ${task.taskName}');
     setState(() {
       taskList.add(task);
     });
-    debugPrint('Task list length: ${taskList.length}');
   }
 
-  //MARK: Delete Task
-  void _deleteTask(String taskId) {
-    debugPrint('Delete task: $taskId');
+  void _deleteTask(TaskItem task) {
     setState(() {
-      taskList.removeWhere((task) => task.id == taskId);
+      taskList.removeWhere((element) => element.id == task.id);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('redraw ui');
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Todo List App',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.blueAccent,
+        title: const Text('Todo List App'),
+        backgroundColor: Colors.blue[100],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.only(top: 10, left: 10, right: 10),
         child: Column(
           children: taskList
-              .map(
-                (task) => TaskRowWidget(
-                  taskItem: task,
-                  deleteTaskCallback: _deleteTask,
-                ),
-              )
+              .map((task) => TaskRowWidget(task: task, deleteTaskCallback: _deleteTask))
               .toList(),
-        )
+        ),
       ),
       floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
         onPressed: () {
-          // Using a Builder to get a context with a MaterialApp ancestor
           showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.white,
             context: context,
             builder: (BuildContext buildContext) {
-              return InputTaskWidget(addTaskCallback: _addTask);
+              return AddTaskWidget(
+                textController: textController,
+                addTaskCallback: _addTask,
+              );
             },
           );
         },
-        child: Icon(Icons.add),
       ),
     );
   }

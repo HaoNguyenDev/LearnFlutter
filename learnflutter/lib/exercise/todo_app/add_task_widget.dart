@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:learnflutter/exercise/todo_app/model/task_item.dart';
 
-class InputTaskWidget extends StatefulWidget {
+class AddTaskWidget extends StatefulWidget {
   final Function addTaskCallback;
+  final TextEditingController textController;
 
-  const InputTaskWidget({super.key, required this.addTaskCallback});
+  const AddTaskWidget({
+    super.key,
+    required this.textController,
+    required this.addTaskCallback,
+  });
 
   @override
-  State<InputTaskWidget> createState() => _InputTaskWidgetState();
+  State<AddTaskWidget> createState() => _AddTaskWidgetState();
 }
 
-class _InputTaskWidgetState extends State<InputTaskWidget> {
-  TextEditingController textController = TextEditingController();
-
-  var _isEnableAddBtn = false;
+class _AddTaskWidgetState extends State<AddTaskWidget> {
+  var _isEnableBtn = false;
 
   void _handleAddTaskBtn(BuildContext context) {
-    var taskName = textController.text;
+    var taskName = widget.textController.text;
     if (taskName.isEmpty) {
       return;
     }
-    textController.clear();
     widget.addTaskCallback(TaskItem(taskName, false));
+    widget.textController.clear();
     Navigator.pop(context);
   }
 
@@ -32,9 +35,8 @@ class _InputTaskWidgetState extends State<InputTaskWidget> {
       child: Container(
         width: double.infinity,
         height: 200,
-        padding: EdgeInsets.only(top: 10, left: 10, right: 10),
         decoration: BoxDecoration(
-          // color: Colors.white,
+          color: Colors.blue[100],
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -43,36 +45,39 @@ class _InputTaskWidgetState extends State<InputTaskWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextField(
-              controller: textController,
-              onChanged: (value) => {
-                setState(() {
-                   _isEnableAddBtn = value.isNotEmpty;
-                })
-              },
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Task Name',
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: TextField(
+                controller: widget.textController,
+                onChanged: (value) => {
+                  debugPrint(value),
+                  setState(() {
+                    _isEnableBtn = value.isNotEmpty;
+                  }),
+                },
+                decoration: InputDecoration(
+                  label: Text('Enter task name'),
+                  // hintText: 'Enter task name',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
-            SizedBox(
+            Container(
               width: double.infinity,
               height: 50,
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
+                onPressed: _isEnableBtn
+                    ? () {
+                        _handleAddTaskBtn(context);
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: _isEnableAddBtn ? Colors.blueAccent : Colors.grey,
+                  backgroundColor: _isEnableBtn
+                      ? Colors.blue
+                      : Colors.grey[400],
                 ),
-                onPressed: () {
-                  _handleAddTaskBtn(context);
-                },
-                child: Text(
-                  'Add Task',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Text('Add task', style: TextStyle(color: Colors.white)),
               ),
             ),
           ],
