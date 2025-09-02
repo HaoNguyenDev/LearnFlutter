@@ -23,7 +23,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
     if (taskName.isEmpty) {
       return;
     }
-    widget.addTaskCallback(TaskItem(taskName, false));
+    widget.addTaskCallback(TaskItem(taskName: taskName, isCompleted: false, dateCreated: DateTime.now()));
     widget.textController.clear();
     Navigator.pop(context);
   }
