@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomeTemperature extends StatelessWidget {
-  const HomeTemperature({
-    super.key,
-  });
+  final double? temperature;
+  const HomeTemperature({super.key, required this.temperature});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +11,7 @@ class HomeTemperature extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '45',
+          '${temperature?.toInt() ?? 0}',
           style: TextStyle(
             fontSize: 100,
             fontWeight: FontWeight.bold,

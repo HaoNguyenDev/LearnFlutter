@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class HomeLocation extends StatelessWidget {
-  const HomeLocation({super.key});
+  final String? locationName;
+  const HomeLocation({super.key, required this.locationName});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class HomeLocation extends StatelessWidget {
             ),
             SizedBox(width: 10),
             Text(
-              'Hanoi, Vietnam',
+              locationName ?? "Unknown Location",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ],
