@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learnflutter/exercise/weather_app/home/home_weather_icon.dart';
-
+import 'package:learnflutter/exercise/weather_app/home/home_temperature.dart';
+import 'package:learnflutter/exercise/weather_app/home/home_location.dart';
+import 'package:learnflutter/exercise/weather_app/home/home_weather_detail.dart';
 class WeatherHomePage extends StatelessWidget {
   const WeatherHomePage({super.key});
   @override
@@ -17,11 +19,17 @@ class WeatherHomePage extends StatelessWidget {
           ),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           HomeWeatherIcon()
+            HomeWeatherIcon(),
+            HomeTemperature(),
+            HomeLocation(),
+            SizedBox(height: 50),
+            HomeWeatherDetail(),
           ],
         ),
       ),
     );
   }
 }
+
