@@ -5,6 +5,11 @@ class HomeWeatherIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset('assets/images/weathers/clear.png');
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      padding: EdgeInsets.all(20),
+      width: size.width / 1.5,
+      child: Image.asset('assets/images/weathers/lightdrizzle.png', fit: BoxFit.fitWidth),
+    );
   }
 }
