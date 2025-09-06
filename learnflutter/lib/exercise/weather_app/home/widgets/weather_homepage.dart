@@ -52,11 +52,11 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                HomeWeatherIcon(),
-                HomeTemperature(temperature: result.main?.temp,),
+                HomeWeatherIcon(iconName: result.weather![0].main),
+                HomeTemperature(temperature: result.main?.temp),
                 HomeLocation(locationName: result.name),
                 SizedBox(height: 50),
-                HomeWeatherDetail(),
+                HomeWeatherDetail(wind: result.wind),
               ],
             );
           },
