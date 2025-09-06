@@ -7,8 +7,8 @@ class HomeLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final df = DateFormat('dd/MM/yyyy');
-    final date = df.format(DateTime.now());
+    final dateFormat = DateFormat('dd/MM/yyyy');
+    final today = dateFormat.format(DateTime.now());
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -29,7 +29,7 @@ class HomeLocation extends StatelessWidget {
           ],
         ),
         SizedBox(height: 17),
-        Text(date, style: TextStyle(color: Colors.white, fontSize: 20)),
+        Text(today, style: TextStyle(color: Colors.white, fontSize: 20)),
       ],
     );
   }

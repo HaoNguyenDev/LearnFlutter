@@ -10,7 +10,7 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider (
-      create: (_) => WeatherProvider(),
+      create: (_) => WeatherProvider(), 
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: WeatherHomePage(),

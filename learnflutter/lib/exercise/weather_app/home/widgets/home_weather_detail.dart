@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:learnflutter/exercise/weather_app/models/weather_result.dart';
 
 class HomeWeatherDetail extends StatelessWidget {
-  const HomeWeatherDetail({super.key});
+  const HomeWeatherDetail({super.key, required this.wind});
+
+  final WindObject? wind;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,7 +21,7 @@ class HomeWeatherDetail extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              '10 km/h',
+              '${wind?.speed ?? 0} km/h',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ],
@@ -33,10 +36,7 @@ class HomeWeatherDetail extends StatelessWidget {
               fit: BoxFit.fitWidth,
             ),
             SizedBox(height: 10),
-            Text(
-              '30%',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
+            Text('${wind?.gust ?? 0.0}', style: TextStyle(color: Colors.white, fontSize: 20)),
           ],
         ),
       ],
