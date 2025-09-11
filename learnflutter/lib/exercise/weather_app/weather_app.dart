@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learnflutter/exercise/weather_app/home/widgets/weather_homepage.dart';
+import 'package:learnflutter/config/custom_theme.dart';
+import 'package:learnflutter/exercise/weather_app/bottom/custom_navigation_buttom.dart';
 import 'package:provider/provider.dart';
 import 'package:learnflutter/exercise/weather_app/provider/weather_provider.dart';
-
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({super.key});
@@ -13,7 +13,8 @@ class WeatherApp extends StatelessWidget {
       create: (_) => WeatherProvider(), 
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: WeatherHomePage(),
+        theme: CustomTheme.lightTheme,
+        home: CustomButtomNavigation(),
       ),
     );
   }

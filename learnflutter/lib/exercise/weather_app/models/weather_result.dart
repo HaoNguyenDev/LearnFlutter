@@ -134,7 +134,7 @@ class WeatherMainObject {
 }
 
 class WindObject {
-  int? speed;
+  double? speed;
   int? deg;
   double? gust;
 
