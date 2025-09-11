@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learnflutter/exercise/weather_app/home/widgets/home_weather_icon.dart';
-import 'package:learnflutter/exercise/weather_app/home/widgets/home_temperature.dart';
-import 'package:learnflutter/exercise/weather_app/home/widgets/home_location.dart';
-import 'package:learnflutter/exercise/weather_app/home/widgets/home_weather_detail.dart';
+import 'package:learnflutter/exercise/weather_app/pages/home/home_weather_icon.dart';
+import 'package:learnflutter/exercise/weather_app/pages/home/home_temperature.dart';
+import 'package:learnflutter/exercise/weather_app/pages/home/home_location.dart';
+import 'package:learnflutter/exercise/weather_app/pages/widgets/home_weather_detail.dart';
 import 'package:learnflutter/exercise/weather_app/models/weather_result.dart';
 import 'package:learnflutter/exercise/weather_app/provider/weather_provider.dart';
 import 'package:provider/provider.dart';
