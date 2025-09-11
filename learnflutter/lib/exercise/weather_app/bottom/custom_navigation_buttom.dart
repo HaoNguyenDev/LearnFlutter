@@ -27,12 +27,14 @@ class _CustomButtomNavigationState extends State<CustomButtomNavigation> {
     return Scaffold(
       body: pages[currentPage],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.transparent,
         items: bottomItems,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         currentIndex: currentPage,
         onTap: (index) {
           setState(() {
+            debugPrint('index: $index');
             currentPage = index;
           });
         },
